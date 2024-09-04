@@ -7,3 +7,24 @@ body {
   color: white;
   overflow-x: hidden;
 }
+/* For webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 4px; /* Adjust width for horizontal scrollbar */
+  height: 8px; /* Adjust height for vertical scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #000; /* Light background for the scrollbar track */
+  border-radius: 10px; /* Rounded corners for the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #222; /* Darker color for the draggable part of the scrollbar */
+  border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #111; /* Darker color on hover */
+}
