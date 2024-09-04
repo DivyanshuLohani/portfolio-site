@@ -1,13 +1,13 @@
-import Navbar from "../components/Navbar";
 import Home from "../components/Home";
 import Projects from "../components/Projects";
+import Timeline from "../components/Experiences";
 
 export default function HomePage() {
   return (
     <>
-      <Navbar />
       <Home />
       <Projects n={4} />
+      <Timeline />
     </>
   );
 }

@@ -29,7 +29,7 @@ function Navbar() {
         </li>
         <li className="p-0">
           <a
-            href=""
+            href="/experience"
             className="flex items-center gap-2 hover:bg-white/10 cursor-pointer p-5"
           >
             <Gamepad2 size={18} />

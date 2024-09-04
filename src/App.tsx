@@ -1,6 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProjectsPage from "./pages/ProjectsPage";
 import HomePage from "./pages/HomePage";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Timeline from "./components/Experiences";
 
 function App() {
   const router = createBrowserRouter([
@@ -12,8 +15,18 @@ function App() {
       path: "/projects/",
       element: <ProjectsPage />,
     },
+    {
+      path: "/experience/",
+      element: <Timeline />,
+    },
   ]);
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <Navbar />
+      <RouterProvider router={router} />
+      <Footer />
+    </>
+  );
 }
 
 export default App;
