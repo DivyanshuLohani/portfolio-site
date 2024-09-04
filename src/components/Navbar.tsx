@@ -4,7 +4,7 @@ import { useState } from "react";
 function Navbar() {
   const [open, setOpen] = useState<boolean>(false);
   return (
-    <nav className="sticky top-0 flex md:px-10 border-b border-[#ffffff44] bg-black z-10 justify-between items-center">
+    <nav className="sticky top-0 flex md:px-10 border-b border-[#ffffff44] backdrop-blur-sm z-10 justify-between items-center">
       <a
         href="/"
         className="text-lg md:text-xl flex items-center gap-2 hover:bg-white/10 px-2 md:p-5"
