@@ -43,7 +43,8 @@ function Home() {
         >
           <SocialLinks />
           <h1 className="text-5xl font-bold">
-            Divyanshu Lohani <br />
+            Divyanshu Lohani
+            <br />
             <span className="text-lg">
               I'm a{" "}
               <ReactTyped
