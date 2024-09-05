@@ -18,7 +18,7 @@ interface TimelineCardProps {
 const TimelineCard: React.FC<TimelineCardProps> = ({ experience }) => {
   return (
     <motion.div
-      className="flex flex-col p-6 rounded-lg shadow-lg text-white border border-white/10 bg-black "
+      className="flex flex-col p-6 rounded-lg shadow-lg text-white border border-white/10 bg-black ml-6 relative"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.2 }}
@@ -27,6 +27,8 @@ const TimelineCard: React.FC<TimelineCardProps> = ({ experience }) => {
         boxShadow: "0px 12px 24px rgba(0, 0, 0, 0.2)",
       }}
     >
+      {" "}
+      <div className="h-3 w-3 absolute -left-8 bg-white rounded-full"></div>
       <div className="flex items-center gap-2 mb-2">
         <FaCode className="text-gray-400" />
         <h2 className="text-xl font-bold">{experience.techName}</h2>

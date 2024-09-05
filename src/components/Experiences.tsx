@@ -90,7 +90,7 @@ const Timeline: React.FC = () => {
         <h1 className="text-3xl font-bold">Experience Timeline</h1>
       </div>
       <div className="relative">
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 h-full border-l border-gray-600"></div>
+        <div className="absolute top-0 left-0 h-full border-l border-gray-600"></div>
         <div className="flex flex-col gap-16">
           {experiences.reverse().map((exp, index) => (
             <div key={index} className="relative">

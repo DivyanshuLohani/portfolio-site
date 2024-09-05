@@ -4,127 +4,179 @@ import { motion } from "framer-motion";
 
 const projects = [
   {
-    year: 2024,
+    url: "https://x.com/DivyanshuLohani/status/1811997184566657384",
+    year: new Date("2024-05-01"),
+    name: "Classroom To Cloud",
+    description:
+      "An app for coaching businesses to take their coaching to online classes",
+    icons: [
+      "devicon-reactnavigation-plain",
+      "devicon-python-plain",
+      "devicon-django-plain",
+      "devicon-tailwindcss-plain",
+    ],
+  },
+  {
+    url: "https://maakalidhoop.in/",
+    year: new Date("2024-07-01"),
+    name: "Maakali Griha Udyog",
+    description:
+      "An ecommerce website with payment gateway integration for a business that sells religious products",
+    icons: [
+      "devicon-nextjs-plain",
+      "devicon-nodejs-plain",
+      "devicon-react-plain",
+      "devicon-tailwindcss-plain",
+    ],
+  },
+  {
+    url: "https://master--expense-trackie.netlify.app/",
+    year: new Date("2024-04-01"),
+    name: "Expense Tracker",
+    description:
+      "An expense tracker app that helps users track expenses and generate CSV reports for the month",
+    icons: ["devicon-react-plain", "devicon-tailwindcss-plain"],
+  },
+  {
+    url: "https://youtu.be/MyUtX_VAC4Q",
+    year: new Date("2024-08-01"),
+    name: "Beattock",
+    description:
+      "A project made for a 48-hour online hackathon PeddieHacks 2024, featuring an AI beat generator and beat exploring platform",
+    icons: [
+      "devicon-python-plain",
+      "devicon-flask-original",
+      "devicon-react-plain",
+      "devicon-scikitlearn-plain",
+    ],
+  },
+  {
+    url: "https://game-of-life-three-kohl.vercel.app/",
+    year: new Date("2024-05-01"),
+    name: "Game of Life Simulation",
+    description: "A simulator for Conway's Game of Life built in React",
+    icons: ["devicon-react-plain"],
+  },
+  {
+    url: "https://youtu.be/rnjLcbqNqd0?si=bjD4nv9LR4GBy088",
+    year: new Date("2024-08-01"),
     name: "Skribbl Clone",
     description:
-      "A skribbl.io clone, a word guessing game made in React, Node.js.",
-    url: "https://github.com/DivyanshuLohani/skribble-clone",
+      "A clone of Skribbl.io with all the original features and additional settings",
     icons: [
       "devicon-nodejs-plain",
-      "devicon-react-original",
-      "devicon-redis-plain",
-      "devicon-socketio-plain",
+      "devicon-react-plain",
+      "devicon-socketio-original",
+      "devicon-tailwindcss-plain",
+      "devicon-websockets-plain",
     ],
   },
   {
-    year: 2024,
-    name: "Maa Kali Griha Udyog",
-    description:
-      "An eCommerce website for a religious products brand selling agarbattis and dhoopbattis.",
-    url: "https://maakalidhoop.in",
-    icons: [
-      "devicon-nextjs-plain",
-      "devicon-nodejs-plain",
-      "devicon-react-original",
-      "devicon-postgresql-plain",
-      "devicon-prisma-plain",
-    ],
-  },
-  {
-    year: 2023,
+    url: "https://privaak.com",
+    year: new Date("2023-06-01"),
     name: "Privaak",
     description:
-      "A website for a safety company that handles user requests visible on the admin site.",
-    url: "https://privaak.com",
+      "A website for a safety company that deals with barriers and equipment for construction",
     icons: [
       "devicon-django-plain",
-      "devicon-react-original",
-      "devicon-javascript-plain",
-      "devicon-html5-plain",
-      "devicon-css3-plain",
+      "devicon-python-plain",
+      "devicon-amazonwebservices-plain",
+      "devicon-docker-plain",
+      "devicon-nginx-original",
     ],
   },
   {
-    year: 2024,
+    url: "https://webbros.online",
+    year: new Date("2024-06-01"),
+    name: "Webbros Site",
+    description:
+      "A website for a social media marketing agency dealing with website development and running ads for businesses",
+    icons: [
+      "devicon-react-plain",
+      "devicon-nextjs-plain",
+      "devicon-tailwindcss-plain",
+    ],
+  },
+  {
+    url: "https://class.webbros.online/",
+    year: new Date("2024-07-01"),
+    name: "Classroom To Cloud Landing Page",
+    description: "A landing page for my coaching SaaS project",
+    icons: ["devicon-nextjs-plain", "devicon-tailwindcss-plain"],
+  },
+  {
+    url: "https://coaching-saas.vercel.app/",
+    year: new Date("2024-04-01"),
     name: "ProAdvisors",
     description:
-      "An online counseling site with appointment booking and payment gateway features.",
-    url: "https://career-site-divyanshu-lohanis-projects.vercel.app/",
+      "A website for a career counseling business with booking of appointments and scheduled emails",
     icons: [
       "devicon-nextjs-plain",
-      "devicon-nodejs-plain",
-      "devicon-react-original",
-      "devicon-postgresql-plain",
-    ],
-  },
-  {
-    year: 2024,
-    name: "WebBros",
-    description: "A website for a social media marketing agency.",
-    url: "https://webbros.online",
-    icons: ["devicon-nextjs-plain", "devicon-react-original"],
-  },
-  {
-    year: 2024,
-    name: "Class 2 Cloud",
-    description:
-      "A landing page for a software company offering online classroom services with live streaming.",
-    url: "https://class.webbros.online",
-    icons: [
-      "devicon-nextjs-plain",
-      "devicon-nodejs-plain",
-      "devicon-react-original",
       "devicon-mongodb-plain",
+      "devicon-tailwindcss-plain",
     ],
   },
   {
-    year: 2024,
-    name: "Coaching SaaS Application",
-    description:
-      "A platform where coaching centers can upload their materials such as notes and DPPs.",
-    url: "https://coaching-saas.vercel.app/",
+    url: "https://x.com/DivyanshuLohani/status/1801315718795039177",
+    year: new Date("2024-05-01"),
+    name: "Threads Clone",
+    description: "A clone of the popular social media platform Threads",
     icons: [
-      "devicon-nextjs-plain",
+      "devicon-react-plain",
+      "devicon-mongodb-plain",
       "devicon-nodejs-plain",
-      "devicon-react-original",
-      "devicon-postgresql-plain",
-      "devicon-django-plain",
+      "devicon-express-original",
     ],
   },
   {
-    year: 2022,
+    url: "https://github.com/DivyanshuLohani/insta-client",
+    year: new Date("2022-06-01"),
+    name: "Instagram Clone",
+    description: "A clone of the popular social media platform Instagram",
+    icons: [
+      "devicon-django-plain",
+      "devicon-react-plain",
+      "devicon-python-plain",
+    ],
+  },
+  {
+    url: "https://github.com/DivyanshuLohani/2DghostGame",
+    year: new Date("2022-01-01"),
     name: "2D Ghost Game",
-    description: "An endless runner game made with Pygame in Python.",
-    url: "https://github.com/DivyanshuLohani/2DGhostGame",
-    icons: ["devicon-python-plain", "devicon-pygame-plain"],
+    description: "An endless runner game made in Python and Pygame",
+    icons: ["devicon-python-plain", "devicon-pygame-original"],
   },
   {
-    year: 2022,
-    name: "Simple Notes App",
-    description: "A notes app built with Django backend and React frontend.",
-    url: "https://github.com/DivyanshuLohani/notes-app",
-    icons: ["devicon-django-plain", "devicon-react-original"],
-  },
-  {
-    year: 2021,
-    name: "TigerO™",
-    description: "An all-rounder Discord bot made with Python.",
-    url: "",
+    url: "https://top.gg/bot/732860855645110272",
+    year: new Date("2021-11-01"),
+    name: "TigerO",
+    description:
+      "A Discord music bot with various functions such as moderation, image manipulation, and more",
     icons: ["devicon-python-plain"],
   },
   {
-    year: 2021,
-    name: "News App",
-    description: "A custom news app built with React and News API.",
-    url: "",
-    icons: ["devicon-react-original", "devicon-newsapi-plain"],
+    url: "https://github.com/DivyanshuLohani/notes-app",
+    year: new Date("2022-07-01"),
+    name: "Simple Notes App",
+    description:
+      "A notes app with persistent note-saving functionality using a backend",
+    icons: [
+      "devicon-django-plain",
+      "devicon-python-plain",
+      "devicon-react-plain",
+      "devicon-materialui-plain",
+    ],
   },
   {
-    year: 2021,
-    name: "IForums",
-    description: "A website similar to Stack Overflow.",
-    url: "https://iforumsapp.herokuapp.com",
-    icons: ["devicon-react-original", "devicon-nodejs-plain"],
+    url: "https://github.com/DivyanshuLohani/flappy-bird",
+    year: new Date("2023-03-01"),
+    name: "Flappy Bird",
+    description: "A Flappy Bird clone built using Raylib",
+    icons: [
+      "devicon-cplusplus-plain",
+      "devicon-raylib-plain",
+      "devicon-android-plain",
+    ],
   },
 ];
 
@@ -153,9 +205,12 @@ function Projects({ n }: { n?: number }) {
           variants={projectVariants}
           className="grid grid-cols-1 md:grid-cols-4 gap-3 px-5"
         >
-          {projects.slice(0, n).map((project, index) => (
-            <ProjectCard key={index} project={project} />
-          ))}
+          {projects
+            .sort((a, b) => b.year.getTime() - a.year.getTime())
+            .slice(0, n)
+            .map((project, index) => (
+              <ProjectCard key={index} project={project} />
+            ))}
         </motion.div>
       </div>
     </section>

@@ -1,9 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { CalendarFold, LucideClock } from "lucide-react";
+import { formatTime } from "@/lib/utils";
 
 interface Project {
-  year: number;
+  year: Date;
   name: string;
   description: string;
   url: string;
@@ -18,7 +19,7 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
     <motion.div
-      className="flex flex-col p-6 rounded-lg shadow-lg text-white bg-black/10 backdrop-blur-sm border border-white/10 "
+      className="flex flex-col p-6 rounded-lg shadow-lg text-white bg-black/10 backdrop-blur-sm border border-white/10 group"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.2 }}
@@ -28,16 +29,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         boxShadow: "0px 12px 24px rgba(0, 0, 0, 0.2)",
       }}
     >
-      <div className="flex flex-col mb-4">
-        <motion.i
-          className={`${project.icons[0]} ${
-            project.icons[0] === "devicon-nextjs-plain" ? "" : "colored"
-          }`}
-          style={{ fontSize: "2rem" }}
-          initial={{ rotate: 0 }}
-          whileInView={{ rotate: [0, 10, -10, 0] }}
-          viewport={{ once: true, amount: 0.05 }}
-        />
+      <div className="flex flex-col mb-4 gap-3">
+        <span className="">
+          <motion.i
+            className={`${project.icons[0]} ${
+              project.icons[0] === "devicon-nextjs-plain" ? "" : "colored"
+            } p-2 border border-white/10 rounded-full group-hover:bg-white/10`}
+            style={{ fontSize: "2rem" }}
+            initial={{ rotate: 0 }}
+            whileInView={{ rotate: [0, 10, -10, 0] }}
+            viewport={{ once: true, amount: 0.05 }}
+          />
+        </span>
         <h2 className="text-2xl font-bold">{project.name}</h2>
       </div>
       <motion.div
@@ -70,7 +73,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           transition={{ duration: 0.5 }}
         >
           <CalendarFold className="text-gray-400" />
-          <span>{project.year}</span>
+          <span>{formatTime(project.year)}</span>
         </motion.div>
       </motion.div>
       <motion.div
