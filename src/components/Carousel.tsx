@@ -1,3 +1,4 @@
+"use client";
 import { ChevronLeftCircle, ChevronRightCircle } from "lucide-react";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";

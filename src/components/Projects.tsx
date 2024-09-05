@@ -1,3 +1,4 @@
+"use client";
 import ProjectCard from "./ProjectCard";
 import { motion } from "framer-motion";
 
@@ -126,6 +127,7 @@ const projects = [
     icons: ["devicon-react-original", "devicon-nodejs-plain"],
   },
 ];
+
 function Projects({ n }: { n?: number }) {
   if (!n) n = projects.length;
 

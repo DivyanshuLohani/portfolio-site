@@ -1,6 +1,6 @@
 import React from "react";
-import { FaCalendarAlt, FaClock } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { CalendarFold, LucideClock } from "lucide-react";
 
 interface Project {
   year: number;
@@ -18,7 +18,7 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
     <motion.div
-      className="flex flex-col p-6 rounded-lg shadow-lg text-white border border-white/10 "
+      className="flex flex-col p-6 rounded-lg shadow-lg text-white bg-black/10 backdrop-blur-sm border border-white/10 "
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.2 }}
@@ -35,7 +35,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           }`}
           style={{ fontSize: "2rem" }}
           initial={{ rotate: 0 }}
-          animate={{ rotate: [0, 10, -10, 0] }}
+          whileInView={{ rotate: [0, 10, -10, 0] }}
+          viewport={{ once: true, amount: 0.05 }}
         />
         <h2 className="text-2xl font-bold">{project.name}</h2>
       </div>
@@ -58,7 +59,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <FaClock className="text-gray-400" />
+            <LucideClock className="text-gray-400" />
             <span>Duration: {project.duration}</span>
           </motion.div>
         )}
@@ -68,7 +69,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <FaCalendarAlt className="text-gray-400" />
+          <CalendarFold className="text-gray-400" />
           <span>{project.year}</span>
         </motion.div>
       </motion.div>
