@@ -232,13 +232,15 @@ function Projects({ n }: { n?: number }) {
                 selectedFilter === icon ? "bg-white/10" : "bg-black"
               } border border-white/10 text-gray-300 px-3 py-1 rounded-full flex items-center gap-3 hover:bg-white/10 cursor-pointer`}
               initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.05 }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
               onClick={() =>
                 setSelectedFilter(selectedFilter === icon ? null : icon)
               }
+              suppressHydrationWarning
             >
-              <i className={`${icon} mr-1`} />
+              <i className={`${icon} mr-1`} suppressHydrationWarning />
               {icon.split("-")[1].replace("reactnavigation", "react-native")}
             </motion.button>
           );
