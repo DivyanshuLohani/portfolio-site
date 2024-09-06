@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useMemo, useState } from "react";
 import ProjectCard from "./ProjectCard";
 import { motion } from "framer-motion";
 
@@ -180,7 +181,29 @@ const projects = [
   },
 ];
 
+function getTechStacks() {
+  const ret: string[] = [];
+  projects.forEach((project) => {
+    if (!ret.includes(project.icons[0])) ret.push(project.icons[0]);
+  });
+  return ret;
+}
+
 function Projects({ n }: { n?: number }) {
+  const [prjects, setProjects] = useState(projects);
+  const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
+  const techs = useMemo(() => getTechStacks(), []);
+
+  useEffect(() => {
+    if (!selectedFilter) {
+      setProjects(projects);
+    } else {
+      setProjects(
+        projects.filter((project) => project.icons.includes(selectedFilter))
+      );
+    }
+  }, [selectedFilter]);
+
   if (!n) n = projects.length;
 
   // Variants for Framer Motion animations
@@ -200,12 +223,34 @@ function Projects({ n }: { n?: number }) {
         <h1 className="text-3xl font-bold mb-4 ">Projects</h1>
       </div>
 
+      <div className="py-5 px-5 flex gap-3 flex-wrap">
+        {techs.map((icon, index) => {
+          return (
+            <motion.button
+              key={index}
+              className={`${
+                selectedFilter === icon ? "bg-white/10" : "bg-black"
+              } border border-white/10 text-gray-300 px-3 py-1 rounded-full flex items-center gap-3 hover:bg-white/10 cursor-pointer`}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3, delay: index * 0.1 }}
+              onClick={() =>
+                setSelectedFilter(selectedFilter === icon ? null : icon)
+              }
+            >
+              <i className={`${icon} mr-1`} />
+              {icon.split("-")[1].replace("reactnavigation", "react-native")}
+            </motion.button>
+          );
+        })}
+      </div>
+
       <div className="resume__container">
         <motion.div
           variants={projectVariants}
           className="grid grid-cols-1 md:grid-cols-4 gap-3 px-5"
         >
-          {projects
+          {prjects
             .sort((a, b) => b.year.getTime() - a.year.getTime())
             .slice(0, n)
             .map((project, index) => (

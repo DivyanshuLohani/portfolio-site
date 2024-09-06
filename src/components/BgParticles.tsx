@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { type Container, type ISourceOptions } from "@tsparticles/engine";
+import { type ISourceOptions } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
 export default function App() {
   const [init, setInit] = useState(false);
@@ -13,19 +13,11 @@ export default function App() {
     });
   }, []);
 
-  const particlesLoaded = async (container?: Container): Promise<void> => {
-    console.log(container);
-  };
-
   const options: ISourceOptions = useMemo(
     () => ({
       fpsLimit: 60,
       interactivity: {
         events: {
-          onClick: {
-            enable: true,
-            mode: "push",
-          },
           onHover: {
             enable: true,
             mode: "repulse",
@@ -98,7 +90,6 @@ export default function App() {
     return (
       <Particles
         id="tsparticles"
-        particlesLoaded={particlesLoaded}
         className="absolute top-0 left-0 h-screen w-screen -z-10 canvas"
         options={options}
       />
