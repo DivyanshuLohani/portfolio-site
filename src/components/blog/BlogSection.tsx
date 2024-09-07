@@ -11,7 +11,7 @@ export default function BlogSection({ posts }: BlogSectionProps) {
       <div className="text-center md:py-5 py-24">
         <h1 className="text-3xl font-bold mb-4 ">From the blog</h1>
       </div>
-      <div className="grid gap-6 py-12 md:grid-cols-3 md:gap-8">
+      <div className="grid gap-6 py-12 grid-cols-1 md:grid-cols-3 md:gap-8">
         {posts.map((post) => (
           <BlogCard key={post.title} post={post} />
         ))}

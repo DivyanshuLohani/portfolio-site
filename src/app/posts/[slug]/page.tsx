@@ -8,7 +8,7 @@ export default async function page({ params }: { params: { slug: string } }) {
   const post = await getBlogPost(params.slug);
   if (!post) return notFound();
   return (
-    <div>
+    <>
       <section className="w-full">
         <Image
           src={post.cover_image}
@@ -18,7 +18,7 @@ export default async function page({ params }: { params: { slug: string } }) {
           className="aspect-[3/1] w-full object-cover"
         />
       </section>
-      <div className="container mx-auto px-4 py-12 md:px-6 md:py-16 lg:py-20">
+      <div className="container mx-auto px-4 py-12 md:px-6 md:py-16 lg:py-20 backdrop-blur-sm">
         <article className="prose prose-gray max-w-3xl mx-auto dark:prose-invert">
           <h1 className="text-4xl font-bold tracking-tight lg:text-5xl mb-4">
             {post.title}
@@ -52,6 +52,6 @@ export default async function page({ params }: { params: { slug: string } }) {
           />
         </article>
       </div>
-    </div>
+    </>
   );
 }
