@@ -2,8 +2,11 @@ import ContactMe from "@/components/ContactMe";
 import Home from "../components/Home";
 import Projects from "../components/Projects";
 import Link from "next/link";
+import BlogSection from "@/components/blog/BlogSection";
+import { getBlogPosts } from "@/lib/data";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const posts = await getBlogPosts();
   return (
     <>
       <Home />
@@ -16,6 +19,7 @@ export default function HomePage() {
           View All
         </Link>
       </div>
+      <BlogSection posts={posts} />
       <ContactMe />
     </>
   );

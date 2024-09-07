@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import SocialLinks from "./SocialLinks";
+import SocialLinks from "./common/SocialLinks";
 
 interface FormError {
   name?: string;

@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { ReactTyped } from "react-typed";
 import TechCarousel from "./Carousel";
-import SocialLinks from "./SocialLinks";
+import SocialLinks from "./common/SocialLinks";
 import { motion, useAnimation } from "framer-motion";
 
 const techItems = [
