@@ -218,12 +218,12 @@ function Projects({ n }: { n?: number }) {
   };
 
   return (
-    <section className="border-t border-white/10 ">
+    <>
       <div className="text-center md:py-5 py-24">
         <h1 className="text-3xl font-bold mb-4 ">Projects</h1>
       </div>
 
-      <div className="py-5 px-5 flex gap-3 flex-wrap">
+      <div className="pt-5 px-5 flex gap-3 flex-wrap">
         {techs.map((icon, index) => {
           return (
             <motion.button
@@ -260,7 +260,7 @@ function Projects({ n }: { n?: number }) {
             ))}
         </motion.div>
       </div>
-    </section>
+    </>
   );
 }
 
