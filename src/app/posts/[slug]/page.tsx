@@ -24,7 +24,7 @@ export default async function page({ params }: { params: { slug: string } }) {
             {post.title}
           </h1>
 
-          <div className="flex gap-5 text-sm">
+          <div className="flex gap-3 text-sm flex-wrap">
             {post.tags.map((tag) => {
               return (
                 <span

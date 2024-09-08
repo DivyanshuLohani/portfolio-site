@@ -7,7 +7,7 @@ headers.append("api-key", process.env.DEV_TO_API_KEY || "");
 headers.append("accept", "application/vnd.forem.api-v1+json");
 
 export async function getBlogPosts(n?: number): Promise<Post[]> {
-  const articles = await fetch("https://dev.to/api/articles/me/", {
+  const articles = await fetch("https://dev.to/api/articles/me/published/", {
     headers,
   });
 
