@@ -1,4 +1,10 @@
-import { FaLinkedin, FaGithub, FaInstagram, FaXTwitter } from "react-icons/fa6";
+import {
+  FaLinkedin,
+  FaGithub,
+  FaInstagram,
+  FaXTwitter,
+  FaEnvelope,
+} from "react-icons/fa6";
 import { motion } from "framer-motion";
 
 const iconVariants = {
@@ -16,6 +22,19 @@ const iconVariants = {
 export default function SocialLinks() {
   return (
     <div className="flex justify-self-start gap-4 text-white/50">
+      <motion.a
+        href="mailto:divyanshulohani2305@gmail.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-muted-foreground hover:text-white transition-colors duration-150"
+        variants={iconVariants}
+        initial="hidden"
+        animate="visible"
+        custom={0}
+      >
+        <FaEnvelope className="h-6 w-6" />
+        <span className="sr-only">Email</span>
+      </motion.a>
       <motion.a
         href="https://x.com/DivyanshuLohani"
         target="_blank"
