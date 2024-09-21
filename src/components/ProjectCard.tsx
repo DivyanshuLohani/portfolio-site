@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { CalendarFold, LucideClock } from "lucide-react";
+import { CalendarFold, ExternalLink, LucideClock } from "lucide-react";
 import { formatTime } from "@/lib/utils";
 
 interface Project {
@@ -102,9 +102,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           href={project.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="px-3 py-2 hover:underline mt-auto border border-white/10 rounded-full hover:bg-white hover:text-black transition-colors duration-300"
+          className="px-3 py-2 hover:underline mt-auto border border-white/10 rounded-full hover:bg-white hover:text-black transition-colors duration-300 flex justify-between items-center"
         >
-          View Project
+          <span>View Project</span>
+          <ExternalLink size={15} />
         </a>
       )}
     </motion.div>
