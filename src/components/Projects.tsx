@@ -61,9 +61,9 @@ const projects = [
   {
     url: "https://youtu.be/rnjLcbqNqd0?si=bjD4nv9LR4GBy088",
     year: new Date("2024-08-01"),
-    name: "Skribbl Clone",
+    name: "Sync Draw Guess",
     description:
-      "A clone of Skribbl.io with all the original features and additional settings",
+      "A realtime multiplayer doodle guessing game",
     icons: [
       "devicon-nodejs-plain",
       "devicon-react-plain",
@@ -120,8 +120,8 @@ const projects = [
   {
     url: "https://x.com/DivyanshuLohani/status/1801315718795039177",
     year: new Date("2024-05-01"),
-    name: "Threads Clone",
-    description: "A clone of the popular social media platform Threads",
+    name: "Thread Nest",
+    description: "A social media site for sharing your opinions",
     icons: [
       "devicon-react-plain",
       "devicon-mongodb-plain",
@@ -132,8 +132,8 @@ const projects = [
   {
     url: "https://github.com/DivyanshuLohani/insta-client",
     year: new Date("2022-06-01"),
-    name: "Instagram Clone",
-    description: "A clone of the popular social media platform Instagram",
+    name: "Pixel Wave",
+    description: "A social media site for sharing memes and posts that users can interact with",
     icons: [
       "devicon-django-plain",
       "devicon-react-plain",
