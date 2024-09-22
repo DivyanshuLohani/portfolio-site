@@ -62,8 +62,7 @@ const projects = [
     url: "https://youtu.be/rnjLcbqNqd0?si=bjD4nv9LR4GBy088",
     year: new Date("2024-08-01"),
     name: "Sync Draw Guess",
-    description:
-      "A realtime multiplayer doodle guessing game",
+    description: "A realtime multiplayer doodle guessing game",
     icons: [
       "devicon-nodejs-plain",
       "devicon-react-plain",
@@ -133,7 +132,8 @@ const projects = [
     url: "https://github.com/DivyanshuLohani/insta-client",
     year: new Date("2022-06-01"),
     name: "Pixel Wave",
-    description: "A social media site for sharing memes and posts that users can interact with",
+    description:
+      "A social media site for sharing memes and posts that users can interact with",
     icons: [
       "devicon-django-plain",
       "devicon-react-plain",
@@ -223,7 +223,7 @@ function Projects({ n }: { n?: number }) {
         <h1 className="text-3xl font-bold mb-4 ">Projects</h1>
       </div>
 
-      <div className="pt-5 px-5 flex gap-3 flex-wrap">
+      <div className="p-5 flex gap-3 flex-wrap border-b border-white/15">
         {techs.map((icon, index) => {
           return (
             <motion.button
@@ -247,19 +247,17 @@ function Projects({ n }: { n?: number }) {
         })}
       </div>
 
-      <div className="resume__container">
-        <motion.div
-          variants={projectVariants}
-          className="grid grid-cols-1 md:grid-cols-4 gap-3 px-5"
-        >
-          {prjects
-            .sort((a, b) => b.year.getTime() - a.year.getTime())
-            .slice(0, n)
-            .map((project, index) => (
-              <ProjectCard key={index} project={project} />
-            ))}
-        </motion.div>
-      </div>
+      <motion.div
+        variants={projectVariants}
+        className="grid grid-cols-1 md:grid-cols-4 gap-3 px-5 mt-10"
+      >
+        {prjects
+          .sort((a, b) => b.year.getTime() - a.year.getTime())
+          .slice(0, n)
+          .map((project, index) => (
+            <ProjectCard key={index} project={project} />
+          ))}
+      </motion.div>
     </>
   );
 }

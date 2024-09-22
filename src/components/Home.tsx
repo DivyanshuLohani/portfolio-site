@@ -33,12 +33,16 @@ function Home() {
     >
       <motion.div
         className="flex flex-col gap-3 md:w-1/2"
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5 }}
+        initial={{ opacity: 0, x: -50, scale: 1.2 }}
+        animate={{ opacity: 1, x: 0, scale: 1 }}
+        transition={{ duration: 0.4, delay: 0.2 }}
       >
         <SocialLinks />
-        <h1 className="text-5xl font-bold">
+        <motion.h1
+          className="text-5xl font-bold"
+          initial={{ filter: "blur(50px)" }}
+          animate={{ filter: "blur(0px)", transition: { delay: 0.5 } }}
+        >
           Divyanshu Lohani
           <br />
           <span className="text-lg">
@@ -55,7 +59,7 @@ function Home() {
               loop={true}
             />
           </span>
-        </h1>
+        </motion.h1>
         <p className="opacity-75 md:text-left text-[1.2em] font-extralight bg-white/10 p-3 rounded backdrop-blur-lg">
           A freelance web developer with extensive experience in both frontend
           and backend technologies. I specialize in building custom websites

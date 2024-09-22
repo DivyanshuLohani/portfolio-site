@@ -46,21 +46,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       <motion.div
         className="border-t border-gray-600 my-4"
         initial={{ width: 0 }}
-        animate={{ width: "100%" }}
+        whileInView={{ width: "100%" }}
+        viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.5 }}
       />
       <motion.div
         className="flex items-center gap-4 mb-4"
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.5, staggerChildren: 0.2 }}
       >
         {project.duration && (
           <motion.div
             className="flex items-center gap-2"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
+            viewport={{ once: true, amount: 0.5 }}
           >
             <LucideClock className="text-gray-400" />
             <span>Duration: {project.duration}</span>
@@ -69,8 +72,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         <motion.div
           className="flex items-center gap-2"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
+          viewport={{ once: true, amount: 0.5 }}
         >
           <CalendarFold className="text-gray-400" />
           <span>{formatTime(project.year)}</span>
@@ -79,8 +83,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       <motion.div
         className="border-t border-gray-600 my-4"
         initial={{ width: 0 }}
-        animate={{ width: "100%" }}
+        whileInView={{ width: "100%" }}
         transition={{ duration: 0.5 }}
+        viewport={{ once: true, amount: 0.5 }}
       />
       <p className="text-gray-400 mb-4 flex-1">{project.description}</p>
       <div className="flex flex-wrap gap-2 mb-4">
@@ -89,8 +94,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             key={index}
             className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-xs"
             initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3, delay: index * 0.1 }}
+            viewport={{ once: true, amount: 0.5 }}
           >
             <i className={`${icon} mr-1`} />
             {icon.split("-")[1]} {/* Display a simplified tech name */}
