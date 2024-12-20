@@ -1,5 +1,5 @@
 "use client";
-import { Code2, Package, Gamepad2 } from "lucide-react";
+import { Code2, Package, Gamepad2, Music } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -22,6 +22,24 @@ const menuVariants = {
   exit: { x: 100, opacity: 0 }, // Slide back offscreen to the right
 };
 
+const links = [
+  {
+    href: "/projects",
+    text: "Projects",
+    icon: Package,
+  },
+  {
+    href: "/experience",
+    text: "Skills",
+    icon: Gamepad2,
+  },
+  {
+    href: "/songs",
+    text: "Music",
+    icon: Music,
+  },
+];
+
 function Navbar() {
   const [open, setOpen] = useState<boolean>(false);
 
@@ -35,7 +53,7 @@ function Navbar() {
   }, [open]);
 
   return (
-    <nav className="sticky top-0 flex md:px-10 border-b border-white/10 backdrop-blur-sm z-10 justify-between items-center">
+    <nav className="sticky top-0 flex md:px-10 border-b bg-black md:bg-transparent md:backdrop-blur-sm border-white/10 z-10 justify-between items-center">
       {/* Hide Home link when the menu is open */}
 
       <motion.div
@@ -77,31 +95,26 @@ function Navbar() {
       </div>
 
       <ul className="hidden md:flex items-center p-0">
-        <li className="p-0">
-          <Link
-            href="/projects"
-            className="flex items-center gap-2 hover:bg-white/10 cursor-pointer p-5"
-          >
-            <Package size={18} />
-            Projects
-          </Link>
-        </li>
-        <li className="p-0">
-          <Link
-            href="/experience"
-            className="flex items-center gap-2 hover:bg-white/10 cursor-pointer p-5"
-          >
-            <Gamepad2 size={18} />
-            Skills
-          </Link>
-        </li>
+        {links.map((link) => {
+          return (
+            <li key={link.href} className="p-0">
+              <Link
+                href={link.href}
+                className="flex items-center gap-2 hover:bg-white/10 cursor-pointer p-5"
+              >
+                <link.icon size={18} />
+                {link.text}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
 
       {/* Slide in/out mobile menu */}
       <AnimatePresence>
         {open && (
           <motion.div
-            className="absolute right-0 top-16 left-0 backdrop-blur-sm z-10"
+            className="absolute right-0 top-16 left-0  backdrop-blur-sm z-10"
             variants={menuVariants}
             initial="hidden"
             animate="visible"
@@ -112,24 +125,17 @@ function Navbar() {
             }}
           >
             <ul className="flex flex-col items-center p-0 w-full">
-              <li className="p-0 w-full">
-                <Link
-                  href="/projects"
-                  className="flex items-center gap-2 hover:bg-white/10 cursor-pointer p-5 w-full"
-                >
-                  <Package size={18} />
-                  Projects
-                </Link>
-              </li>
-              <li className="p-0 w-full">
-                <Link
-                  href="/experience"
-                  className="flex items-center gap-2 hover:bg-white/10 cursor-pointer p-5 w-full"
-                >
-                  <Gamepad2 size={18} />
-                  Skills
-                </Link>
-              </li>
+              {links.map((link) => (
+                <li className="p-0 w-full" key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="flex items-center gap-2 hover:bg-white/10 cursor-pointer p-5 w-full"
+                  >
+                    <link.icon size={18} />
+                    {link.text}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </motion.div>
         )}
