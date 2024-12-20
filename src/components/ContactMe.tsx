@@ -198,7 +198,7 @@ export default function ContactMe() {
         <motion.div className="flex justify-end">
           <button
             type="submit"
-            className="px-6 py-2 bg-white text-black font-bold rounded-lg hover:bg-white/80 duration-300 transition-colors focus:ring-opacity-50"
+            className="px-6 py-2 bg-white text-black font-bold rounded-lg hover:bg-white/80 duration-300 transition-colors focus:ring-opacity-50 w-full"
           >
             Submit
           </button>
