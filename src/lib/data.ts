@@ -9,6 +9,7 @@ headers.append("accept", "application/vnd.forem.api-v1+json");
 export async function getBlogPosts(n?: number): Promise<Post[]> {
   const articles = await fetch("https://dev.to/api/articles/me/published/", {
     headers,
+    cache: "no-store",
   });
 
   if (articles.ok) {

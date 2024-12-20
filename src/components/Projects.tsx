@@ -5,7 +5,10 @@ import { motion } from "framer-motion";
 
 const projects = [
   {
-    url: "https://x.com/DivyanshuLohani/status/1811997184566657384",
+    imageUrl:
+      "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F6alnho4w4jwj4bn5acx0.png",
+    url: "https://github.com/DivyanshuLohani/ClassToCloud",
+    liveUrl: "https://x.com/DivyanshuLohani/status/1839622747288203433",
     year: new Date("2024-05-01"),
     name: "Classroom To Cloud",
     description:
@@ -18,7 +21,10 @@ const projects = [
     ],
   },
   {
-    url: "https://maakalidhoop.in/",
+    imageUrl:
+      "https://github.com/user-attachments/assets/3570874a-744a-4c09-9e08-730c388e2f60",
+    liveUrl: "https://maakalidhoop.in/",
+    url: "https://github.com/DivyanshuLohani/maa-kali-griha-udyog-ecommerce",
     year: new Date("2024-07-01"),
     name: "Maakali Griha Udyog",
     description:
@@ -31,15 +37,21 @@ const projects = [
     ],
   },
   {
-    url: "https://master--expense-trackie.netlify.app/",
+    imageUrl:
+      "https://github.com/user-attachments/assets/91bc7556-c92f-4ddb-9750-a5470c8a3bf5",
+    liveUrl: "https://finflow.divyanshulohani.xyz",
+    url: "https://github.com/DivyanshuLohani/FinFlow",
     year: new Date("2024-04-01"),
-    name: "Expense Tracker",
+    name: "FinFlow",
     description:
       "An expense tracker app that helps users track expenses and generate CSV reports for the month",
     icons: ["devicon-react-plain", "devicon-tailwindcss-plain"],
   },
   {
-    url: "https://youtu.be/MyUtX_VAC4Q",
+    imageUrl:
+      "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fgtnp315xgu2pbptsuc0l.png",
+    liveUrl: "https://youtu.be/MyUtX_VAC4Q",
+    url: "https://github.com/Sharko123/aibeatmaker",
     year: new Date("2024-08-01"),
     name: "Beattock",
     description:
@@ -51,15 +63,19 @@ const projects = [
       "devicon-scikitlearn-plain",
     ],
   },
+  // {
+  //   liveUrl: "https://game-of-life-three-kohl.vercel.app/",
+  //   githubUrl: "https://github.com/DivyanshuLohani/GameOfLife",
+  //   year: new Date("2024-05-01"),
+  //   name: "Game of Life Simulation",
+  //   description: "A simulator for Conway's Game of Life built in React",
+  //   icons: ["devicon-react-plain"],
+  // },
   {
-    url: "https://game-of-life-three-kohl.vercel.app/",
-    year: new Date("2024-05-01"),
-    name: "Game of Life Simulation",
-    description: "A simulator for Conway's Game of Life built in React",
-    icons: ["devicon-react-plain"],
-  },
-  {
-    url: "https://youtu.be/rnjLcbqNqd0?si=bjD4nv9LR4GBy088",
+    imageUrl:
+      "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fqxwlml29q8z34yorz9xp.png",
+    liveUrl: "https://youtu.be/rnjLcbqNqd0?si=bjD4nv9LR4GBy088",
+    url: "https://github.com/DivyanshuLohani/SyncDrawGuess",
     year: new Date("2024-08-01"),
     name: "Sync Draw Guess",
     description: "A realtime multiplayer doodle guessing game",
@@ -72,7 +88,9 @@ const projects = [
     ],
   },
   {
-    url: "https://privaak.com",
+    imageUrl: "",
+    liveUrl: "",
+    url: "https://github.com/DivyanshuLohani/Privaak",
     year: new Date("2023-06-01"),
     name: "Privaak",
     description:
@@ -85,38 +103,42 @@ const projects = [
       "devicon-nginx-original",
     ],
   },
+  // {
+  //   url: "https://webbros.online",
+  //   year: new Date("2024-06-01"),
+  //   name: "Webbros Site",
+  //   description:
+  //     "A website for a social media marketing agency dealing with website development and running ads for businesses",
+  //   icons: [
+  //     "devicon-react-plain",
+  //     "devicon-nextjs-plain",
+  //     "devicon-tailwindcss-plain",
+  //   ],
+  // },
+  // {
+  //   url: "https://class.webbros.online/",
+  //   year: new Date("2024-07-01"),
+  //   name: "Classroom To Cloud Landing Page",
+  //   description: "A landing page for my coaching SaaS project",
+  //   icons: ["devicon-nextjs-plain", "devicon-tailwindcss-plain"],
+  // },
+  // {
+
+  //   liveUrl: "",
+  //   url: "https://github.com/DivyanshuLohani/career-site",
+  //   year: new Date("2024-04-01"),
+  //   name: "ProAdvisors",
+  //   description:
+  //     "A website for a career counseling business with booking of appointments and scheduled emails",
+  //   icons: [
+  //     "devicon-nextjs-plain",
+  //     "devicon-mongodb-plain",
+  //     "devicon-tailwindcss-plain",
+  //   ],
+  // },
   {
-    url: "https://webbros.online",
-    year: new Date("2024-06-01"),
-    name: "Webbros Site",
-    description:
-      "A website for a social media marketing agency dealing with website development and running ads for businesses",
-    icons: [
-      "devicon-react-plain",
-      "devicon-nextjs-plain",
-      "devicon-tailwindcss-plain",
-    ],
-  },
-  {
-    url: "https://class.webbros.online/",
-    year: new Date("2024-07-01"),
-    name: "Classroom To Cloud Landing Page",
-    description: "A landing page for my coaching SaaS project",
-    icons: ["devicon-nextjs-plain", "devicon-tailwindcss-plain"],
-  },
-  {
-    url: "https://coaching-saas.vercel.app/",
-    year: new Date("2024-04-01"),
-    name: "ProAdvisors",
-    description:
-      "A website for a career counseling business with booking of appointments and scheduled emails",
-    icons: [
-      "devicon-nextjs-plain",
-      "devicon-mongodb-plain",
-      "devicon-tailwindcss-plain",
-    ],
-  },
-  {
+    imageUrl:
+      "https://pbs.twimg.com/media/GP-PEavbEAAQqOc?format=jpg&name=large",
     url: "https://x.com/DivyanshuLohani/status/1801315718795039177",
     year: new Date("2024-05-01"),
     name: "Thread Nest",
@@ -141,6 +163,8 @@ const projects = [
     ],
   },
   {
+    imageUrl:
+      "https://github.com/DivyanshuLohani/2DghostGame/raw/main/resources/imgs/readme.png",
     url: "https://github.com/DivyanshuLohani/2DghostGame",
     year: new Date("2022-01-01"),
     name: "2D Ghost Game",
@@ -148,6 +172,8 @@ const projects = [
     icons: ["devicon-python-plain", "devicon-pygame-original"],
   },
   {
+    imageUrl:
+      "https://images.discordapp.net/avatars/732860855645110272/14b61800b57a82b1841c6cc2eb2baf47.png?size=512&w=512&q=75",
     url: "https://top.gg/bot/732860855645110272",
     year: new Date("2021-11-01"),
     name: "TigerO",
@@ -169,6 +195,7 @@ const projects = [
     ],
   },
   {
+    // imageUrl: "",
     url: "https://github.com/DivyanshuLohani/flappy-bird",
     year: new Date("2023-03-01"),
     name: "Flappy Bird",

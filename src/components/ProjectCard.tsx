@@ -2,6 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { CalendarFold, ExternalLink, LucideClock } from "lucide-react";
 import { formatTime } from "@/lib/utils";
+import { FaGithub } from "react-icons/fa6";
+import Image from "next/image";
 
 interface Project {
   year: Date;
@@ -10,6 +12,8 @@ interface Project {
   url: string;
   icons: string[];
   duration?: string;
+  liveUrl?: string;
+  imageUrl?: string;
 }
 
 interface ProjectCardProps {
@@ -19,7 +23,7 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
     <motion.div
-      className="flex flex-col p-6 rounded-lg shadow-lg text-white bg-black/10 backdrop-blur-sm border border-white/10 group"
+      className="flex flex-col p-6 rounded-lg shadow-lg text-white bg-black/10 backdrop-blur-sm border border-white/10 group relative"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.2 }}
@@ -43,6 +47,29 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         </span>
         <h2 className="text-2xl font-bold">{project.name}</h2>
       </div>
+      {project.imageUrl && (
+        <motion.div
+          className="-px-6"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2 }}
+          viewport={{ once: true, amount: 0.5 }}
+        >
+          <a
+            href={project.liveUrl ?? project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className=""
+          >
+            <Image
+              height={300}
+              width={300}
+              src={project.imageUrl}
+              alt="Project Image"
+            />
+          </a>
+        </motion.div>
+      )}
       <motion.div
         className="border-t border-gray-600 my-4"
         initial={{ width: 0 }}
@@ -103,17 +130,30 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           </motion.span>
         ))}
       </div>
-      {project.url && (
-        <a
-          href={project.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-3 py-2 hover:underline mt-auto border border-white/10 rounded-full hover:bg-white hover:text-black transition-colors duration-300 flex justify-between items-center"
-        >
-          <span>View Project</span>
-          <ExternalLink size={15} />
-        </a>
-      )}
+      <div className="flex w-full gap-1 justify-between">
+        {project.liveUrl && (
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-3 py-2 hover:underline mt-auto border border-white/10 rounded-full hover:bg-white hover:text-black transition-colors duration-300 flex gap-2 items-center w-full"
+          >
+            <ExternalLink size={15} />
+            <span>Demo</span>
+          </a>
+        )}
+        {project.url && (
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-3 py-2 hover:underline mt-auto border border-white/10 rounded-full hover:bg-white hover:text-black transition-colors duration-300 flex justify-center gap-1 items-center w-full"
+          >
+            <FaGithub size={15} />
+            <span>Source</span>
+          </a>
+        )}
+      </div>
     </motion.div>
   );
 };

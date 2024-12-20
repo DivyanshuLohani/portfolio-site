@@ -1,5 +1,5 @@
 "use client";
-import { Code2, Package, Gamepad2, Music } from "lucide-react";
+import { Code2, Package, Gamepad2, Music, Pen } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -32,6 +32,11 @@ const links = [
     href: "/experience",
     text: "Skills",
     icon: Gamepad2,
+  },
+  {
+    href: "/posts",
+    text: "Blog",
+    icon: Pen,
   },
   {
     href: "/songs",

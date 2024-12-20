@@ -7,7 +7,7 @@ import { getBlogPosts } from "@/lib/data";
 import { Suspense } from "react";
 
 export default async function HomePage() {
-  const posts = await getBlogPosts(3);
+  const posts = await getBlogPosts(4);
   return (
     <>
       <section>
