@@ -1,6 +1,6 @@
 import ContactMe from "@/components/ContactMe";
-import Home from "../components/Home";
-import Projects from "../components/Projects";
+import Home from "../../components/Home";
+import Projects from "../../components/Projects";
 import Link from "next/link";
 import BlogSection from "@/components/blog/BlogSection";
 import { getBlogPosts } from "@/lib/data";
