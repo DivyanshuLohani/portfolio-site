@@ -23,7 +23,7 @@ export default function SocialLinks() {
   return (
     <div className="flex justify-self-start gap-4 text-white/50">
       <motion.a
-        href="mailto:divyanshulohani2305@gmail.com"
+        href="mailto:divyanshu@divyanshulohani.xyz"
         target="_blank"
         rel="noopener noreferrer"
         className="text-muted-foreground hover:text-white transition-colors duration-150"
