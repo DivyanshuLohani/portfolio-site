@@ -81,7 +81,7 @@ function Home() {
           width={400}
           src="https://pbs.twimg.com/media/GgMh34LaYAEhAC7?format=jpg&name=large"
           alt="Profile Image"
-          className="rounded-full border-grey-500 border-4 w-full h-full"
+          className="rounded-full border-grey-500 border-4"
         />
       </motion.div>
     </section>
