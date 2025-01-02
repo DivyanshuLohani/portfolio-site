@@ -5,6 +5,7 @@ import Link from "next/link";
 import BlogSection from "@/components/blog/BlogSection";
 import { getBlogPosts } from "@/lib/data";
 import { Suspense } from "react";
+import MusicContent from "@/components/Music";
 
 export default async function HomePage() {
   const posts = await getBlogPosts(4);
@@ -12,6 +13,9 @@ export default async function HomePage() {
     <>
       <section>
         <Home />
+      </section>
+      <section className="border-y border-white/10 py-1">
+        <MusicContent />
       </section>
       <section className="border-y border-white/10 space-y-4 ">
         <Projects n={4} />
