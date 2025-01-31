@@ -6,10 +6,26 @@ import { motion } from "framer-motion";
 const projects = [
   {
     imageUrl:
+      "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F10d9xj7y9iw9u2uhycmn.png",
+    url: "https://github.com/DivyanshuLohani/GroceryDeliveryApp",
+    liveUrl: "https://x.com/i/status/1872324261920346577",
+    year: new Date("2024-12-01"),
+    name: "Grocery Dilevery App",
+    description:
+      "A grocery delivery app built with React Native, Django, and Python.  It allows users to browse products, add items to their cart, and place orders for delivery. Handles delivery with auto rider management",
+    icons: [
+      "devicon-reactnavigation-plain",
+      "devicon-python-plain",
+      "devicon-django-plain",
+      "devicon-tailwindcss-plain",
+    ],
+  },
+  {
+    imageUrl:
       "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F6alnho4w4jwj4bn5acx0.png",
     url: "https://github.com/DivyanshuLohani/ClassToCloud",
     liveUrl: "https://x.com/DivyanshuLohani/status/1839622747288203433",
-    year: new Date("2024-05-01"),
+    year: new Date("2024-09-01"),
     name: "Classroom To Cloud",
     description:
       "An app for coaching businesses to take their coaching to online classes",
@@ -38,10 +54,10 @@ const projects = [
   },
   {
     imageUrl:
-      "https://github.com/user-attachments/assets/91bc7556-c92f-4ddb-9750-a5470c8a3bf5",
+      "https://github.com/user-attachments/assets/9b6a3769-f8e2-431c-a044-86c06f74152e",
     liveUrl: "https://finflow.divyanshulohani.xyz",
     url: "https://github.com/DivyanshuLohani/FinFlow",
-    year: new Date("2024-04-01"),
+    year: new Date("2024-11-01"),
     name: "FinFlow",
     description:
       "An expense tracker app that helps users track expenses and generate CSV reports for the month",
@@ -63,20 +79,12 @@ const projects = [
       "devicon-scikitlearn-plain",
     ],
   },
-  // {
-  //   liveUrl: "https://game-of-life-three-kohl.vercel.app/",
-  //   githubUrl: "https://github.com/DivyanshuLohani/GameOfLife",
-  //   year: new Date("2024-05-01"),
-  //   name: "Game of Life Simulation",
-  //   description: "A simulator for Conway's Game of Life built in React",
-  //   icons: ["devicon-react-plain"],
-  // },
   {
     imageUrl:
       "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fqxwlml29q8z34yorz9xp.png",
     liveUrl: "https://youtu.be/rnjLcbqNqd0?si=bjD4nv9LR4GBy088",
     url: "https://github.com/DivyanshuLohani/SyncDrawGuess",
-    year: new Date("2024-08-01"),
+    year: new Date("2024-08-05"),
     name: "Sync Draw Guess",
     description: "A realtime multiplayer doodle guessing game",
     icons: [
@@ -101,53 +109,6 @@ const projects = [
       "devicon-amazonwebservices-plain",
       "devicon-docker-plain",
       "devicon-nginx-original",
-    ],
-  },
-  // {
-  //   url: "https://webbros.online",
-  //   year: new Date("2024-06-01"),
-  //   name: "Webbros Site",
-  //   description:
-  //     "A website for a social media marketing agency dealing with website development and running ads for businesses",
-  //   icons: [
-  //     "devicon-react-plain",
-  //     "devicon-nextjs-plain",
-  //     "devicon-tailwindcss-plain",
-  //   ],
-  // },
-  // {
-  //   url: "https://class.webbros.online/",
-  //   year: new Date("2024-07-01"),
-  //   name: "Classroom To Cloud Landing Page",
-  //   description: "A landing page for my coaching SaaS project",
-  //   icons: ["devicon-nextjs-plain", "devicon-tailwindcss-plain"],
-  // },
-  // {
-
-  //   liveUrl: "",
-  //   url: "https://github.com/DivyanshuLohani/career-site",
-  //   year: new Date("2024-04-01"),
-  //   name: "ProAdvisors",
-  //   description:
-  //     "A website for a career counseling business with booking of appointments and scheduled emails",
-  //   icons: [
-  //     "devicon-nextjs-plain",
-  //     "devicon-mongodb-plain",
-  //     "devicon-tailwindcss-plain",
-  //   ],
-  // },
-  {
-    imageUrl:
-      "https://pbs.twimg.com/media/GP-PEavbEAAQqOc?format=jpg&name=large",
-    url: "https://x.com/DivyanshuLohani/status/1801315718795039177",
-    year: new Date("2024-05-01"),
-    name: "Thread Nest",
-    description: "A social media site for sharing your opinions",
-    icons: [
-      "devicon-react-plain",
-      "devicon-mongodb-plain",
-      "devicon-nodejs-plain",
-      "devicon-express-original",
     ],
   },
   {
@@ -193,7 +154,7 @@ const projects = [
       "devicon-react-plain",
       "devicon-materialui-plain",
     ],
-  }
+  },
 ];
 
 function getTechStacks() {
