@@ -14,9 +14,7 @@ export default async function HomePage() {
       <section>
         <Home />
       </section>
-      <section className="border-y border-white/10 py-1">
-        <MusicContent />
-      </section>
+
       <section className="border-y border-white/10 space-y-4 ">
         <Projects n={4} />
         <div className="flex justify-center mt-10">
@@ -40,6 +38,9 @@ export default async function HomePage() {
             </Link>
           </div>
         </Suspense>
+      </section>
+      <section className="border-y border-white/10 py-5">
+        <MusicContent />
       </section>
       <section>
         <ContactMe />
