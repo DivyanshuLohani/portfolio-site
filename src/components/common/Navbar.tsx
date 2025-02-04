@@ -58,7 +58,7 @@ function Navbar() {
   }, [open]);
 
   return (
-    <nav className="sticky top-0 flex md:px-10 border-b bg-black md:bg-transparent md:backdrop-blur-sm border-white/10 z-10 justify-between items-center">
+    <nav className="fixed w-full top-0 flex md:px-10 border-b bg-black md:bg-transparent md:backdrop-blur-sm border-white/10 z-10 justify-between items-center">
       {/* Hide Home link when the menu is open */}
 
       <motion.div
