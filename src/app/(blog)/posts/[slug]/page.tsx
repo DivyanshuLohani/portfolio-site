@@ -4,6 +4,20 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import React from "react";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const post = await getBlogPost(params.slug);
+  if (!post) return;
+
+  return {
+    title: post.title,
+    description: post.description,
+  };
+}
+
 export default async function page({ params }: { params: { slug: string } }) {
   const post = await getBlogPost(params.slug);
   if (!post) return notFound();

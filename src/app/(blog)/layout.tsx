@@ -1,4 +1,3 @@
-import BgParticles from "@/components/BgParticles";
 import Footer from "@/components/common/Footer";
 import Navbar from "@/components/common/Navbar";
 import React from "react";
@@ -9,7 +8,6 @@ export default function DevLayout({
   return (
     <>
       <Navbar />
-      <BgParticles />
       <main className="py-12 md:py-16 lg:py-20">{children}</main>
       <Footer />
     </>
