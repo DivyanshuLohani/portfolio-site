@@ -82,7 +82,11 @@ export default async function page({ params }: { params: { slug: string } }) {
 
           <div
             className="porse"
-            dangerouslySetInnerHTML={{ __html: post.body_html }}
+            dangerouslySetInnerHTML={{
+              __html: post.body_html.replaceAll(
+                "https://dev.to/divyanshulohani", "/posts"
+              ),
+            }}
           />
         </article>
       </div>
