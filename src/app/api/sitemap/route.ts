@@ -27,7 +27,7 @@ export async function GET() {
     <url>
       <loc>${baseUrl}${link.href}</loc>
       <lastmod>${link.updatedAt}</lastmod>
-      <changefreq>monthly</changefreq>
+      <changefreq>weekly</changefreq>
       <priority>0.7</priority>
     </url>
     `
