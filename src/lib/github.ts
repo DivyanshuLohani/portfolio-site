@@ -80,3 +80,24 @@ export async function getRepositoryData(repoName: string) {
     };
   }
 }
+
+export async function createIssue(
+  repoName: string,
+  title: string,
+  body: string
+) {
+  try {
+    const response = await API.post(
+      `/repos/DivyanshuLohani/${repoName}/issues`,
+      {
+        title,
+        body,
+      }
+    );
+    return response.data;
+  } catch (e) {
+    return {
+      error: "Something went wrong",
+    };
+  }
+}
