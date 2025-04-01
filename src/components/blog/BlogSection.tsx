@@ -13,7 +13,7 @@ export default function BlogSection({ posts }: BlogSectionProps) {
       </div>
       <div className="grid gap-6 py-12 grid-cols-1 md:grid-cols-2 md:gap-8">
         {posts.map((post) => (
-          <BlogCard key={post.title} post={post} />
+          <BlogCard key={post.slug} post={post} />
         ))}
       </div>
     </div>

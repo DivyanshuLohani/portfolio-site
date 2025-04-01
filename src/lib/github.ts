@@ -94,6 +94,7 @@ export async function createIssue(
         body,
       }
     );
+    console.log(response.data);
     return response.data;
   } catch (e) {
     return {
