@@ -15,7 +15,7 @@ export default async function HomePage() {
         <Home />
       </section>
 
-      <section className="border-y border-white/10 space-y-4 ">
+      <section className="border-y border-white/10 space-y-4  ">
         <Projects n={4} />
         <div className="flex justify-center mt-10">
           <Link

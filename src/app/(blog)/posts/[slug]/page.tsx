@@ -43,7 +43,10 @@ export default async function page({ params }: { params: { slug: string } }) {
   if (!post) return notFound();
   return (
     <div className="container mx-auto px-4 py-12 md:px-6 md:py-16 lg:py-5 backdrop-blur-sm">
-      <article className="prose prose-gray max-w-3xl mx-auto dark:prose-invert">
+      <article
+        className="prose prose-gray max-w-3xl mx-auto dark:prose-invert"
+        itemType="article"
+      >
         <Image
           src={post.cover_image}
           width={1600}
@@ -51,32 +54,33 @@ export default async function page({ params }: { params: { slug: string } }) {
           alt={post.description}
           className="w-full object-contain rounded-md"
         />
-        <h1 className="text-4xl font-bold tracking-tight lg:text-5xl mb-4">
-          {post.title}
-        </h1>
+        <header>
+          <h1 className="text-4xl font-bold tracking-tight lg:text-5xl mb-4">
+            {post.title}
+          </h1>
 
-        <div className="flex gap-3 text-sm flex-wrap">
-          {post.tags.map((tag) => {
-            return (
-              <span
-                key={tag}
-                className="px-3 py-2 rounded-full border border-white/20"
-              >
-                #{tag}
-              </span>
-            );
-          })}
-        </div>
-        <div className="text-white/60 pt-3 flex gap-2 items-center">
-          <span className="font-semibold">
-            Posted on {formatDate(post.published_at)}
-          </span>
-          <span>&bull;</span>
-          <span className="text-white/60 ">
-            {post.reading_time_minutes} min read
-          </span>
-        </div>
-
+          <div className="flex gap-3 text-sm flex-wrap">
+            {post.tags.map((tag) => {
+              return (
+                <span
+                  key={tag}
+                  className="px-3 py-2 rounded-full border border-white/20"
+                >
+                  #{tag}
+                </span>
+              );
+            })}
+          </div>
+          <div className="text-white/60 pt-3 flex gap-2 items-center">
+            <span className="font-semibold">
+              Posted on {formatDate(post.published_at)}
+            </span>
+            <span>&bull;</span>
+            <span className="text-white/60 ">
+              {post.reading_time_minutes} min read
+            </span>
+          </div>
+        </header>
         <div
           className="porse"
           dangerouslySetInnerHTML={{

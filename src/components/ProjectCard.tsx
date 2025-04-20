@@ -23,7 +23,7 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
     <motion.div
-      className="flex flex-col p-6 rounded-lg shadow-lg text-white bg-black/10 backdrop-blur-sm border border-white/10 group relative"
+      className="flex flex-col p-6 rounded-lg shadow-lg text-white bg-black/10 backdrop-blur-lg border border-white/10 group relative"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.2 }}
