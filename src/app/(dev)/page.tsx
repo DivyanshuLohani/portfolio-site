@@ -8,7 +8,7 @@ import { Suspense } from "react";
 import MusicContent from "@/components/Music";
 
 export default async function HomePage() {
-  const posts = await getBlogPosts(4);
+  const posts = await getBlogPosts(3);
   return (
     <>
       <section>
