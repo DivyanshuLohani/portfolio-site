@@ -44,7 +44,7 @@ export default async function page({ params }: { params: { slug: string } }) {
   return (
     <div className="container mx-auto px-4 py-12 md:px-6 md:py-16 lg:py-5 backdrop-blur-sm">
       <article
-        className="prose prose-gray max-w-3xl mx-auto dark:prose-invert"
+        className="prose prose-gray max-w-3xl mx-auto prose-invert"
         itemType="article"
       >
         <Image
