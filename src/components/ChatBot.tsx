@@ -1,18 +1,22 @@
 "use client";
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Bot, User } from 'lucide-react';
 import { useChat } from '@ai-sdk/react';
-import Markdown from 'react-markdown'
+import Markdown from 'react-markdown';
+
+
 
 const ChatAssistant = () => {
-    const { messages, input, handleInputChange, handleSubmit, status } = useChat();
+    const { messages, input, handleInputChange, handleSubmit, status, append } = useChat();
     const [isOpen, setIsOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [hasOpenedBefore, setHasOpenedBefore] = useState(false);
+    const [showTooltip, setShowTooltip] = useState(true);
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        if (status === "streaming") {
+        if (status === "streaming" || status === "submitted") {
             setIsLoading(true);
         } else {
             setIsLoading(false);
@@ -28,24 +32,68 @@ const ChatAssistant = () => {
     }, [messages]);
 
     useEffect(() => {
+        console.log(status);
         if (isOpen && inputRef.current) {
             inputRef.current.focus();
         }
+        if (status === "ready") {
+            console.log("Focus")
+            inputRef.current?.focus();
+        }
     }, [isOpen, status]);
 
+    // Hide tooltip after some time
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowTooltip(false);
+        }, 5000); // Hide after 5 seconds
 
+        return () => clearTimeout(timer);
+    }, []);
+
+    const handleOpenChat = async () => {
+        setIsOpen(true);
+        setShowTooltip(false);
+
+        // Send welcome message only on first open
+        if (!hasOpenedBefore) {
+            setHasOpenedBefore(true);
+            // Add a small delay to ensure the chat window is open
+            setTimeout(() => {
+                append({
+                    role: 'user',
+                    content: 'Hello'
+                });
+            }, 100);
+        }
+    };
 
     return (
         <>
             <div className="fixed bottom-6 right-6 z-50">
                 {!isOpen && (
-                    <button
-                        onClick={() => setIsOpen(true)}
-                        className="bg-black hover:bg-gray-900 text-white rounded-full p-4 shadow-lg transition-all duration-300 hover:scale-110 group"
-                    >
-                        <MessageCircle className="w-6 h-6" />
-                        <div className="absolute -top-2 -right-2 w-3 h-3 bg-white border border-black rounded-full animate-pulse"></div>
-                    </button>
+                    <div className="relative">
+                        <button
+                            onClick={handleOpenChat}
+                            className="bg-black hover:bg-gray-900 text-white rounded-full p-4 shadow-lg transition-all duration-300 hover:scale-110 group"
+                            onMouseEnter={() => setShowTooltip(true)}
+                            onMouseLeave={() => setTimeout(() => setShowTooltip(false), 2000)}
+                        >
+                            <MessageCircle className="w-6 h-6" />
+                            <div className="absolute -top-2 -right-2 w-3 h-3 bg-white border border-black rounded-full animate-pulse"></div>
+                        </button>
+
+                        {/* Tooltip */}
+                        {showTooltip && (
+                            <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-white text-black text-sm rounded-lg shadow-lg whitespace-nowrap transform transition-all duration-300 opacity-100 translate-y-0">
+                                <div className="relative">
+                                    Hi there! How can I help you? 💬
+                                    {/* Tooltip arrow */}
+                                    <div className="absolute top-full right-4 w-2 h-2 bg-white transform rotate-45 translate-y-[-50%]"></div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
                 )}
             </div>
 
