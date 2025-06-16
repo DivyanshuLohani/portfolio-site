@@ -2,7 +2,7 @@ import { getBlogPosts } from "@/lib/data";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  const baseUrl = "https://divyanshulohani.xyz";
+  const baseUrl = "https://www.divyanshulohani.xyz";
   const posts = await getBlogPosts();
 
   const staticLinks = [
