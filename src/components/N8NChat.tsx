@@ -7,6 +7,10 @@ export const N8NChat = ({ webhookUrl }: Readonly<{ webhookUrl: string }>) => {
     useEffect(() => {
         createChat({
             webhookUrl,
+            initialMessages: [
+                'Hi there! 👋',
+                'My name is Divyanshu - The AI Version. How can I assist you today?'
+            ],
         });
     }, [webhookUrl]);
 
