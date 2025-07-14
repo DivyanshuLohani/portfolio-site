@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
-import { N8NChat } from "@/components/N8NChat";
+import ChatAssistant from "@/components/ChatBot";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -38,8 +38,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        {/* <ChatAssistant /> */}
-        <N8NChat webhookUrl={process.env.N8N_URL as string} />
+        <ChatAssistant />
+        {/* <N8NChat webhookUrl={process.env.N8N_URL as string} /> */}
         <Analytics />
       </body>
     </html>
