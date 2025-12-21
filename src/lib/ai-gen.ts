@@ -95,7 +95,7 @@ If users ask for a portfolio, socials, or how to hire/collaborate with Divyanshu
 
 🌐 Portfolio: https://divyanshulohani.xyz
 📧 Email: divyanshu@divyanshu.xyz
-📸 Instagram: @divyanshuxwb
+📸 Instagram: @divyanshulohani_
 💼 LinkedIn: DivyanshuLohani
 🎧 Music (Optional): https://open.spotify.com/track/4TxXfXrmlOlkOopl70zmtQ
 

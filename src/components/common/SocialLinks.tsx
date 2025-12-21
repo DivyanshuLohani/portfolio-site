@@ -62,7 +62,7 @@ export default function SocialLinks() {
         <span className="sr-only">GitHub</span>
       </motion.a>
       <motion.a
-        href="https://instagram.com/divyanshuxwb"
+        href="https://instagram.com/divyanshulohani_"
         target="_blank"
         rel="noopener noreferrer"
         className="text-muted-foreground hover:text-white transition-colors duration-150"
