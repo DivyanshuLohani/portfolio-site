@@ -73,7 +73,7 @@ export default async function page({ params }: { params: { slug: string } }) {
           </div>
 
           {/* Meta Information & Author - Blended in one line */}
-          <div className="flex items-center gap-4 text-sm text-white/60 py-4 border-y border-white/10">
+          <div className="flex  items-center gap-4 text-sm text-white/60 border-y border-white/10">
             <Image
               src={post.user.profile_image}
               width={40}

@@ -6,6 +6,22 @@ import { motion } from "framer-motion";
 const projects = [
   {
     imageUrl:
+      "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fqxwlml29q8z34yorz9xp.png",
+    liveUrl: "https://guessdoodle.com",
+    url: "https://github.com/DivyanshuLohani/SyncDrawGuess",
+    year: new Date("2024-08-05"),
+    name: "Sync Draw Guess",
+    description: "A realtime multiplayer doodle guessing game",
+    icons: [
+      "devicon-nodejs-plain",
+      "devicon-react-plain",
+      "devicon-socketio-original",
+      "devicon-tailwindcss-plain",
+      "devicon-websockets-plain",
+    ],
+  },
+  {
+    imageUrl:
       "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F10d9xj7y9iw9u2uhycmn.png",
     url: "https://github.com/DivyanshuLohani/GroceryDeliveryApp",
     liveUrl: "https://x.com/i/status/1872324261920346577",
@@ -38,22 +54,6 @@ const projects = [
   },
   {
     imageUrl:
-      "https://github.com/user-attachments/assets/3570874a-744a-4c09-9e08-730c388e2f60",
-    liveUrl: "https://maakalidhoop.in/",
-    url: "https://github.com/DivyanshuLohani/maa-kali-griha-udyog-ecommerce",
-    year: new Date("2024-07-01"),
-    name: "Maakali Griha Udyog",
-    description:
-      "An ecommerce website with payment gateway integration for a business that sells religious products",
-    icons: [
-      "devicon-nextjs-plain",
-      "devicon-nodejs-plain",
-      "devicon-react-plain",
-      "devicon-tailwindcss-plain",
-    ],
-  },
-  {
-    imageUrl:
       "https://github.com/user-attachments/assets/9b6a3769-f8e2-431c-a044-86c06f74152e",
     liveUrl: "https://finflow.divyanshulohani.xyz",
     url: "https://github.com/DivyanshuLohani/FinFlow",
@@ -63,98 +63,8 @@ const projects = [
       "An expense tracker app that helps users track expenses and generate CSV reports for the month",
     icons: ["devicon-react-plain", "devicon-tailwindcss-plain"],
   },
-  {
-    imageUrl:
-      "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fgtnp315xgu2pbptsuc0l.png",
-    liveUrl: "https://youtu.be/MyUtX_VAC4Q",
-    url: "https://github.com/Sharko123/aibeatmaker",
-    year: new Date("2024-08-01"),
-    name: "Beattock",
-    description:
-      "A project made for a 48-hour online hackathon PeddieHacks 2024, featuring an AI beat generator and beat exploring platform",
-    icons: [
-      "devicon-python-plain",
-      "devicon-flask-original",
-      "devicon-react-plain",
-      "devicon-scikitlearn-plain",
-    ],
-  },
-  {
-    imageUrl:
-      "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fqxwlml29q8z34yorz9xp.png",
-    liveUrl: "https://youtu.be/rnjLcbqNqd0?si=bjD4nv9LR4GBy088",
-    url: "https://github.com/DivyanshuLohani/SyncDrawGuess",
-    year: new Date("2024-08-05"),
-    name: "Sync Draw Guess",
-    description: "A realtime multiplayer doodle guessing game",
-    icons: [
-      "devicon-nodejs-plain",
-      "devicon-react-plain",
-      "devicon-socketio-original",
-      "devicon-tailwindcss-plain",
-      "devicon-websockets-plain",
-    ],
-  },
-  {
-    imageUrl: "",
-    liveUrl: "",
-    url: "https://github.com/DivyanshuLohani/Privaak",
-    year: new Date("2023-06-01"),
-    name: "Privaak",
-    description:
-      "A website for a safety company that deals with barriers and equipment for construction",
-    icons: [
-      "devicon-django-plain",
-      "devicon-python-plain",
-      "devicon-amazonwebservices-plain",
-      "devicon-docker-plain",
-      "devicon-nginx-original",
-    ],
-  },
-  {
-    url: "https://github.com/DivyanshuLohani/insta-client",
-    year: new Date("2022-06-01"),
-    name: "Pixel Wave",
-    description:
-      "A social media site for sharing memes and posts that users can interact with",
-    icons: [
-      "devicon-django-plain",
-      "devicon-react-plain",
-      "devicon-python-plain",
-    ],
-  },
-  {
-    imageUrl:
-      "https://github.com/DivyanshuLohani/2DghostGame/raw/main/resources/imgs/readme.png",
-    url: "https://github.com/DivyanshuLohani/2DghostGame",
-    year: new Date("2022-01-01"),
-    name: "2D Ghost Game",
-    description: "An endless runner game made in Python and Pygame",
-    icons: ["devicon-python-plain", "devicon-pygame-original"],
-  },
-  {
-    imageUrl:
-      "https://images.discordapp.net/avatars/732860855645110272/14b61800b57a82b1841c6cc2eb2baf47.png?size=512&w=512&q=75",
-    url: "https://top.gg/bot/732860855645110272",
-    year: new Date("2021-11-01"),
-    name: "TigerO",
-    description:
-      "A Discord music bot with various functions such as moderation, image manipulation, and more",
-    icons: ["devicon-python-plain"],
-  },
-  {
-    url: "https://github.com/DivyanshuLohani/notes-app",
-    year: new Date("2022-07-01"),
-    name: "Simple Notes App",
-    description:
-      "A notes app with persistent note-saving functionality using a backend",
-    icons: [
-      "devicon-django-plain",
-      "devicon-python-plain",
-      "devicon-react-plain",
-      "devicon-materialui-plain",
-    ],
-  },
+
+
 ];
 
 function getTechStacks() {
@@ -204,9 +114,8 @@ function Projects({ n }: { n?: number }) {
           return (
             <motion.button
               key={index}
-              className={`${
-                selectedFilter === icon ? "bg-white/10" : "bg-black"
-              } border border-white/10 text-gray-300 px-3 py-1 rounded-full flex items-center gap-3 hover:bg-white/10 cursor-pointer`}
+              className={`${selectedFilter === icon ? "bg-white/10" : "bg-black"
+                } border border-white/10 text-gray-300 px-3 py-1 rounded-full flex items-center gap-3 hover:bg-white/10 cursor-pointer`}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, amount: 0.05 }}
