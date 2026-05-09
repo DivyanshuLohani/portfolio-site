@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Project {
   year: Date;
@@ -13,6 +14,7 @@ interface Project {
   duration?: string;
   liveUrl?: string;
   imageUrl?: string;
+  slug: string;
 }
 
 interface ProjectCardProps {
@@ -98,22 +100,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-3 py-2 hover:underline mt-auto border border-white/10 rounded-full hover:bg-white hover:text-black transition-colors duration-300 flex gap-2 items-center w-full"
+            className="px-3 py-2 hover:underline mt-auto border border-white/10 rounded-full hover:bg-white hover:text-black transition-colors duration-300 flex justify-center gap-2 items-center w-full"
           >
             <ExternalLink size={15} />
             <span>Demo</span>
           </a>
         )}
         {project.url && (
-          <a
-            href={project.url}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href={`/projects/${project.slug}`}
             className="px-3 py-2 hover:underline mt-auto border border-white/10 rounded-full hover:bg-white hover:text-black transition-colors duration-300 flex justify-center gap-1 items-center w-full"
           >
             <FaGithub size={15} />
-            <span>Source</span>
-          </a>
+            <span>View</span>
+          </Link>
         )}
       </div>
     </motion.div>

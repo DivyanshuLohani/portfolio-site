@@ -51,7 +51,7 @@ interface CodeBlockProps extends React.HTMLAttributes<HTMLElement> {
     children?: ReactNode; // make optional
 }
 // Custom code block component
-const CodeBlock = ({ inline, className, children, ...props }: CodeBlockProps) => {
+export const CodeBlock = ({ inline, className, children, ...props }: CodeBlockProps) => {
     const match = /language-(\w+)/.exec(className || '');
     let language = match ? match[1] : '';
     if (language === 'js') language = 'javascript';
