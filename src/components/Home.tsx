@@ -16,10 +16,9 @@ export default function Home() {
         transition={{ duration: 0.6 }}
         className="max-w-2xl"
       >
-        <h1 className="text-4xl md:text-6xl font-semibold tracking-tight">
-          Divyanshu Lohani
+        <h1 className="text-4xl md:text-6xl font-semibold tracking-tight text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.9)]">
+          <span className="animate-pulse">Divyanshu Lohani</span>
         </h1>
-
         <p className="mt-4 text-lg md:text-xl opacity-70">
           Full-stack developer building scalable web apps and developer tools.
         </p>
@@ -40,3 +39,4 @@ export default function Home() {
     </section>
   );
 }
+
