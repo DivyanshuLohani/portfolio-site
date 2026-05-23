@@ -8,7 +8,7 @@ export const projects = [
     name: "Nexus - Link in Bio",
     description: "A link in bio type app inspired by LinkTree",
     icons: [
-      "deviocn-react-plain",
+      "devicon-react-plain",
       "devicon-tailwindcss-plain",
       "devicon-postgres-plain",
     ],
