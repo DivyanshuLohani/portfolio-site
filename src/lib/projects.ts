@@ -1,5 +1,19 @@
 export const projects = [
   {
+    imageUrl: "/projs/Nexus.png",
+    liveUrl: "https://nexus.divyanshulohani.xyz/",
+    url: "https://github.com/DivyanshuLohani/nexus",
+    slug: "nexus",
+    year: new Date(),
+    name: "Nexus - Link in Bio",
+    description: "A link in bio type app inspired by LinkTree",
+    icons: [
+      "deviocn-react-plain",
+      "devicon-tailwindcss-plain",
+      "devicon-postgres-plain",
+    ],
+  },
+  {
     imageUrl:
       "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fqxwlml29q8z34yorz9xp.png",
     liveUrl: "https://guessdoodle.com",
