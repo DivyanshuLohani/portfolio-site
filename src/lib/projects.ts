@@ -18,9 +18,9 @@ export const projects = [
       "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fqxwlml29q8z34yorz9xp.png",
     liveUrl: "https://guessdoodle.com",
     url: "https://github.com/DivyanshuLohani/SyncDrawGuess",
-    slug: "SyncDrawGuess - Doodle Guessing Game",
+    slug: "SyncDrawGuess",
     year: new Date("2024-08-05"),
-    name: "Sync Draw Guess",
+    name: "Sync Draw Guess - Doodle Guessing Game",
     description: "A realtime multiplayer doodle guessing game",
     icons: [
       "devicon-nodejs-plain",
