@@ -18,7 +18,7 @@ export const projects = [
       "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fqxwlml29q8z34yorz9xp.png",
     liveUrl: "https://guessdoodle.com",
     url: "https://github.com/DivyanshuLohani/SyncDrawGuess",
-    slug: "SyncDrawGuess",
+    slug: "SyncDrawGuess - Doodle Guessing Game",
     year: new Date("2024-08-05"),
     name: "Sync Draw Guess",
     description: "A realtime multiplayer doodle guessing game",
@@ -54,7 +54,7 @@ export const projects = [
     slug: "ClassToCloud",
     liveUrl: "https://x.com/DivyanshuLohani/status/1839622747288203433",
     year: new Date("2024-09-01"),
-    name: "Classroom To Cloud",
+    name: "Classroom To Cloud - LMS Platform with Video Streaming",
     description:
       "An app for coaching businesses to take their coaching to online classes",
     icons: [
@@ -71,7 +71,7 @@ export const projects = [
     url: "https://github.com/DivyanshuLohani/FinFlow",
     slug: "FinFlow",
     year: new Date("2024-11-01"),
-    name: "FinFlow",
+    name: "FinFlow - Expense Tracker",
     description:
       "An expense tracker app that helps users track expenses and generate CSV reports for the month",
     icons: ["devicon-react-plain", "devicon-tailwindcss-plain"],
