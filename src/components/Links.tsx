@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
-import { FaTree } from "react-icons/fa";
 import {
 	FaCode,
 	FaEnvelope,
