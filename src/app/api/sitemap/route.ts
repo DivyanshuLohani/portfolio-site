@@ -11,6 +11,9 @@ export async function GET() {
     { href: "/posts", updatedAt: "2025-02-01" },
     { href: "/songs", updatedAt: "2025-02-01" },
     { href: "/about", updatedAt: "2025-02-01" },
+    { href: "/rss.xml", updatedAt: "2026-09-12" },
+    { href: "/llm.txt", updatedAt: "2026-09-12" },
+    { href: "/robots.txt", updatedAt: "2026-09-12" },
   ];
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

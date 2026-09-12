@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 
+import RssFloatingIcon from "@/components/common/RssFloatingIcon";
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -17,6 +19,11 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Divyanshu Lohani",
   description: "Fullstack Developer & Software Developer",
+  alternates: {
+    types: {
+      "application/rss+xml": "https://divyanshulohani.xyz/rss.xml",
+    },
+  },
 };
 
 export default function RootLayout({
@@ -28,6 +35,12 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Divyanshu Lohani RSS Feed"
+          href="/rss.xml"
+        />
+        <link
           rel="stylesheet"
           type="text/css"
           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
@@ -38,6 +51,7 @@ export default function RootLayout({
       >
         {children}
 
+        <RssFloatingIcon />
         {/* <N8NChat webhookUrl={process.env.N8N_URL as string} /> */}
         <Analytics />
       </body>
