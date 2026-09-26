@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const links = [
@@ -12,7 +13,7 @@ const links = [
 	},
 	{
 		href: "/posts",
-		text: "Blog",
+		text: "Writing",
 	},
 	{
 		href: "/songs",
@@ -21,6 +22,7 @@ const links = [
 ];
 
 export default function Navbar() {
+	const pathname = usePathname();
 	const [open, setOpen] = useState(false);
 
 	useEffect(() => {
@@ -42,8 +44,8 @@ export default function Navbar() {
           top-0
           z-50
           border-b
-          border-white/10
-          bg-[#050505]/80
+          border-white/[0.08]
+          bg-[#050505]/85
           backdrop-blur-md
         "
 			>
@@ -59,85 +61,164 @@ export default function Navbar() {
             md:px-10
           "
 				>
-					{/* Logo */}
+					{/* Brand */}
 					<Link
 						href="/"
 						onClick={closeMenu}
-						className="
-              group
-              flex
-              items-center
-              gap-2
-              text-sm
-              font-medium
-              tracking-[-0.02em]
-              text-white
-            "
+						className="group flex items-center gap-3"
 					>
-						<span className="text-white/40 transition-colors group-hover:text-[#7c9cff]">
-							/
-						</span>
+						{/* DL mark */}
+						<div
+							className="
+                relative
+                flex
+                h-7
+                w-7
+                items-center
+                justify-center
+                overflow-hidden
+                border
+                border-white/15
+                bg-white/[0.03]
+                text-[10px]
+                font-semibold
+                tracking-[-0.08em]
+                text-white
+                transition-all
+                duration-300
+                group-hover:border-[#7c9cff]/50
+                group-hover:text-[#7c9cff]
+              "
+						>
+							DL
+						</div>
 
-						<span>Dibbu.dev</span>
+						<div className="flex items-center gap-2">
+							<span
+								className="
+                  text-sm
+                  font-medium
+                  tracking-[-0.02em]
+                  text-white
+                "
+							>
+								Dibbu.dev
+							</span>
+
+							{/* tiny status/accent */}
+							<span
+								className="
+                  h-1.5
+                  w-1.5
+                  rounded-full
+                  bg-[#7c9cff]
+                  opacity-60
+                  transition-opacity
+                  group-hover:opacity-100
+                "
+							/>
+						</div>
 					</Link>
 
 					{/* Desktop navigation */}
 					<div className="hidden items-center md:flex">
-						{links.map((link) => (
-							<Link
-								key={link.href}
-								href={link.href}
-								className="
-                  group
-                  ml-8
-                  flex
-                  items-center
-                  gap-1.5
-                  text-[10px]
-                  uppercase
-                  tracking-[0.14em]
-                  text-white/40
-                  transition-colors
-                  hover:text-white
-                "
-							>
-								{link.text}
+						{links.map((link) => {
+							const isActive =
+								pathname === link.href ||
+								Boolean(pathname?.startsWith(`${link.href}/`));
 
-								<ArrowUpRight
-									size={11}
-									strokeWidth={1.5}
-									className="
-                    opacity-0
-                    -translate-x-1
-                    transition-all
-                    duration-200
-                    group-hover:translate-x-0
-                    group-hover:opacity-100
-                  "
-								/>
-							</Link>
-						))}
+							return (
+								<Link
+									key={link.href}
+									href={link.href}
+									className={`
+                    group
+                    relative
+                    ml-9
+                    flex
+                    items-center
+                    gap-1.5
+                    py-2
+                    text-[10px]
+                    uppercase
+                    tracking-[0.14em]
+                    transition-colors
+                    ${isActive ? "text-white" : "text-white/35 hover:text-white"}
+                  `}
+								>
+									{link.text}
 
+									<ArrowUpRight
+										size={10}
+										strokeWidth={1.5}
+										className={`
+                      -translate-y-0.5
+                      transition-all
+                      duration-200
+                      ${
+												isActive
+													? "translate-x-0.5 opacity-70"
+													: "opacity-0 group-hover:translate-x-0.5 group-hover:opacity-70"
+											}
+                    `}
+									/>
+
+									{/* underline */}
+									<span
+										className={`
+                      absolute
+                      bottom-0
+                      left-0
+                      h-px
+                      bg-[#7c9cff]
+                      transition-all
+                      duration-300
+                      ${isActive ? "w-full" : "w-0 group-hover:w-full"}
+                    `}
+									/>
+								</Link>
+							);
+						})}
+
+						{/* Contact */}
 						<Link
 							href="/#contact"
 							className="
-                ml-10
-                border-l
+                group
+                ml-9
+                flex
+                items-center
+                gap-2
+                border
                 border-white/10
-                pl-8
+                px-4
+                py-2
                 text-[10px]
                 uppercase
                 tracking-[0.14em]
-                text-white/60
-                transition-colors
+                text-white/50
+                transition-all
+                duration-300
+                hover:border-white/25
+                hover:bg-white/[0.03]
                 hover:text-white
               "
 						>
 							Contact
+							<ArrowUpRight
+								size={10}
+								strokeWidth={1.5}
+								className="
+                  transition-transform
+                  duration-200
+                  group-hover:translate-x-0.5
+                  group-hover:-translate-y-0.5
+                "
+							/>
 						</Link>
 					</div>
 
-					{/* Mobile button */}
+					{/* Mobile */}
 					<button
 						type="button"
 						aria-label={open ? "Close menu" : "Open menu"}
@@ -149,16 +230,16 @@ export default function Navbar() {
               w-9
               items-center
               justify-center
-              text-white/60
+              text-white/50
               transition-colors
               hover:text-white
               md:hidden
             "
 					>
 						{open ? (
-							<X size={20} strokeWidth={1.5} />
+							<X size={19} strokeWidth={1.5} />
 						) : (
-							<Menu size={20} strokeWidth={1.5} />
+							<Menu size={19} strokeWidth={1.5} />
 						)}
 					</button>
 				</div>
@@ -181,66 +262,72 @@ export default function Navbar() {
             "
 					>
 						<motion.div
-							initial={{ y: -20, opacity: 0 }}
+							initial={{ y: -15, opacity: 0 }}
 							animate={{ y: 0, opacity: 1 }}
-							exit={{ y: -20, opacity: 0 }}
+							exit={{ y: -15, opacity: 0 }}
 							transition={{ duration: 0.25 }}
 							className="flex h-full flex-col"
 						>
-							{/* Links */}
 							<div className="px-6">
-								{links.map((link, index) => (
-									<Link
-										key={link.href}
-										href={link.href}
-										onClick={closeMenu}
-										className="
-                      group
-                      flex
-                      items-center
-                      justify-between
-                      border-b
-                      border-white/10
-                      py-7
-                    "
-									>
-										<div className="flex items-baseline gap-5">
-											<span
-												className="
-                          text-[10px]
-                          tracking-[0.12em]
-                          text-[#7c9cff]
-                        "
-											>
-												{String(index + 1).padStart(2, "0")}
-											</span>
+								{links.map((link, index) => {
+									const isActive =
+										pathname === link.href ||
+										Boolean(pathname?.startsWith(`${link.href}/`));
 
-											<span
-												className="
-                          text-4xl
-                          font-medium
-                          tracking-[-0.04em]
-                          text-white/90
-                          transition-colors
-                          group-hover:text-white
-                        "
-											>
-												{link.text}
-											</span>
-										</div>
-
-										<ArrowUpRight
-											size={20}
-											strokeWidth={1.5}
+									return (
+										<Link
+											key={link.href}
+											href={link.href}
+											onClick={closeMenu}
 											className="
-                        text-white/20
-                        transition-all
-                        group-hover:translate-x-1
-                        group-hover:text-white
+                        group
+                        flex
+                        items-center
+                        justify-between
+                        border-b
+                        border-white/10
+                        py-7
                       "
-										/>
-									</Link>
-								))}
+										>
+											<div className="flex items-baseline gap-5">
+												<span
+													className="
+                            text-[10px]
+                            tracking-[0.12em]
+                            text-[#7c9cff]
+                          "
+												>
+													{String(index + 1).padStart(2, "0")}
+												</span>
+
+												<span
+													className={`
+                            text-4xl
+                            font-medium
+                            tracking-[-0.04em]
+                            transition-colors
+                            ${isActive ? "text-white" : "text-white/90 group-hover:text-white"}
+                          `}
+												>
+													{link.text}
+												</span>
+											</div>
+
+											<ArrowUpRight
+												size={20}
+												strokeWidth={1.5}
+												className={`
+                          transition-all
+                          ${
+														isActive
+															? "translate-x-1 text-white"
+															: "text-white/20 group-hover:translate-x-1 group-hover:text-white"
+													}
+                        `}
+											/>
+										</Link>
+									);
+								})}
 
 								<Link
 									href="/#contact"
@@ -286,7 +373,6 @@ export default function Navbar() {
 								</Link>
 							</div>
 
-							{/* Bottom */}
 							<div className="mt-auto px-6 pb-8">
 								<p className="text-[10px] uppercase tracking-[0.14em] text-white/20">
 									Developer · Builder · Music

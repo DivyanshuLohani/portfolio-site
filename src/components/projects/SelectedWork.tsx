@@ -61,7 +61,8 @@ function SelectedWork() {
 				{/* Projects */}
 				<div className="border-t border-white/10">
 					{selectedProjects.map((project, index) => {
-						const projectUrl = project.url || `/projects/${project.slug}`;
+						const projectUrl =
+							project.url || project.liveUrl || `/projects/${project.slug}`;
 
 						return (
 							<motion.article

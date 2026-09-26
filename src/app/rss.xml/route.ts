@@ -3,7 +3,7 @@ import type { Post } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
-const DOMAIN = "https://divyanshulohani.xyz";
+const DOMAIN = "https://dibbu.dev";
 
 function escapeXml(str: string): string {
 	if (!str) return "";

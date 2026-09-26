@@ -259,7 +259,7 @@ export default function ProjectsPage({ projects }: ProjectsPageProps) {
 	}, [projects, search, selectedTech]);
 
 	return (
-		<main className="min-h-screen border-b border-white/10">
+		<main className="min-h-screen">
 			<div className="mx-auto max-w-[1298px] px-6 md:px-10">
 				{/* Header */}
 				<header className="border-b border-white/10 py-12 md:py-16">

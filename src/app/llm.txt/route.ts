@@ -2,10 +2,8 @@ import { getBlogPosts } from "@/lib/data";
 import { projects } from "@/lib/projects";
 import type { Post } from "@/lib/types";
 
-export const dynamic = "force-dynamic";
-
 export async function GET() {
-	const DOMAIN = "https://divyanshulohani.xyz";
+	const DOMAIN = "https://dibbu.dev";
 	let blogPosts: Post[] = [];
 	try {
 		blogPosts = await getBlogPosts();

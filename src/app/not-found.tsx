@@ -1,210 +1,241 @@
-"use client"
-import { useState, useEffect } from 'react';
-import { Home, ArrowLeft, Github, Mail, Instagram, Linkedin } from 'lucide-react';
-import Navbar from '@/components/common/Navbar';
+"use client";
+
+import { motion } from "framer-motion";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
+import Navbar from "@/components/common/Navbar";
 
 export default function NotFoundPage() {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const [nodes, setNodes] = useState<{
-        id: number;
-        x: number;
-        y: number;
-        size: number;
-        delay: number;
-    }[]>([]);
-    const [glitchText, setGlitchText] = useState('404');
+	return (
+		<div className="min-h-screen bg-[#050505] text-[#f2f2f0]">
+			<Navbar />
 
-    // Generate random network nodes
-    useEffect(() => {
-        const generateNodes = () => {
-            const nodeCount = 15;
-            const newNodes = [];
-            for (let i = 0; i < nodeCount; i++) {
-                newNodes.push({
-                    id: i,
-                    x: Math.random() * 100,
-                    y: Math.random() * 100,
-                    size: Math.random() * 3 + 2,
-                    delay: Math.random() * 2,
-                });
-            }
-            setNodes(newNodes);
-        };
-        generateNodes();
-    }, []);
+			<main className="relative flex min-h-screen items-center overflow-hidden px-6 pt-[72px] md:px-10">
+				{/* Very subtle background detail */}
+				<div
+					className="
+            pointer-events-none
+            absolute
+            right-[8%]
+            top-[25%]
+            h-[500px]
+            w-[500px]
+            rounded-full
+            bg-[#7c9cff]/[0.025]
+            blur-[120px]
+          "
+				/>
 
-    // Track mouse position for interactive effects
-    useEffect(() => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const handleMouseMove = (e: any) => {
-            setMousePosition({
-                x: (e.clientX / window.innerWidth) * 100,
-                y: (e.clientY / window.innerHeight) * 100,
-            });
-        };
-        window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, []);
+				<div className="mx-auto w-full max-w-[1298px]">
+					<div className="max-w-[900px]">
+						{/* Label */}
+						<motion.div
+							initial={{ opacity: 0, y: 10 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.5 }}
+							className="mb-8 flex items-center gap-3"
+						>
+							<span className="h-2 w-2 bg-[#7c9cff]" />
 
-    // Glitch effect for 404 text
-    useEffect(() => {
-        const glitchChars = ['4', '0', '4', '♦', '●', '▲', '■'];
-        const interval = setInterval(() => {
-            if (Math.random() < 0.1) {
-                const randomChar = glitchChars[Math.floor(Math.random() * glitchChars.length)];
-                setGlitchText(prev => {
-                    const chars = prev.split('');
-                    const randomIndex = Math.floor(Math.random() * chars.length);
-                    chars[randomIndex] = randomChar;
-                    return chars.join('');
-                });
-                setTimeout(() => setGlitchText('404'), 100);
-            }
-        }, 200);
+							<span
+								className="
+                  text-[10px]
+                  uppercase
+                  tracking-[0.18em]
+                  text-white/30
+                "
+							>
+								Error / 404
+							</span>
+						</motion.div>
 
-        return () => clearInterval(interval);
-    }, []);
+						{/* 404 */}
+						<motion.h1
+							initial={{ opacity: 0, y: 25 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{
+								duration: 0.7,
+								ease: "easeOut",
+							}}
+							className="
+                select-none
+                text-[clamp(8rem,25vw,22rem)]
+                font-medium
+                leading-[0.72]
+                tracking-[-0.09em]
+                text-white/[0.07]
+              "
+						>
+							404
+						</motion.h1>
 
-    const NetworkBackground = () => (
-        <div className="fixed inset-0 overflow-hidden pointer-events-none">
-            {/* Animated network nodes */}
-            {nodes.map((node) => (
-                <div
-                    key={node.id}
-                    className="absolute rounded-full bg-gray-600 opacity-30"
-                    style={{
-                        left: `${node.x}%`,
-                        top: `${node.y}%`,
-                        width: `${node.size}px`,
-                        height: `${node.size}px`,
-                        animation: `float ${3 + node.delay}s ease-in-out infinite alternate`,
-                    }}
-                />
-            ))}
+						{/* Message */}
+						<motion.div
+							initial={{ opacity: 0, y: 20 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{
+								delay: 0.15,
+								duration: 0.6,
+							}}
+							className="
+                relative
+                -mt-4
+                md:-mt-12
+                md:ml-[12%]
+              "
+						>
+							<h2
+								className="
+                  max-w-2xl
+                  text-4xl
+                  font-medium
+                  leading-[0.95]
+                  tracking-[-0.045em]
+                  md:text-6xl
+                "
+							>
+								This page doesn't
+								<br />
+								exist.
+							</h2>
 
-            {/* Connecting lines */}
-            {nodes.map((node, i) =>
-                nodes.slice(i + 1).map((otherNode, j) => {
-                    const distance = Math.sqrt(
-                        Math.pow(node.x - otherNode.x, 2) + Math.pow(node.y - otherNode.y, 2)
-                    );
-                    if (distance < 25) {
-                        return (
-                            <div
-                                key={`${i}-${j}`}
-                                className="absolute h-px bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-20"
-                                style={{
-                                    left: `${Math.min(node.x, otherNode.x)}%`,
-                                    top: `${Math.min(node.y, otherNode.y)}%`,
-                                    width: `${Math.abs(node.x - otherNode.x)}%`,
-                                    transform: `rotate(${Math.atan2(otherNode.y - node.y, otherNode.x - node.x) * 180 / Math.PI}deg)`,
-                                    transformOrigin: 'left center',
-                                    animation: `pulse ${2 + Math.random()}s ease-in-out infinite`,
-                                }}
-                            />
-                        );
-                    }
-                    return null;
-                })
-            )}
+							<p
+								className="
+                  mt-6
+                  max-w-md
+                  text-sm
+                  leading-6
+                  text-white/40
+                  md:text-base
+                "
+							>
+								The URL you're looking for couldn't be found. It may have moved,
+								been deleted, or perhaps never existed in the first place.
+							</p>
+						</motion.div>
 
-            {/* Mouse follower effect */}
-            <div
-                className="absolute w-64 h-64 rounded-full opacity-5 pointer-events-none transition-all duration-300 ease-out"
-                style={{
-                    left: `${mousePosition.x}%`,
-                    top: `${mousePosition.y}%`,
-                    background: 'radial-gradient(circle, rgba(79, 172, 254, 0.1) 0%, transparent 70%)',
-                    transform: 'translate(-50%, -50%)',
-                }}
-            />
-        </div>
-    );
+						{/* Actions */}
+						<motion.div
+							initial={{ opacity: 0, y: 15 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{
+								delay: 0.3,
+								duration: 0.5,
+							}}
+							className="
+                mt-10
+                flex
+                flex-wrap
+                items-center
+                gap-3
+                md:ml-[12%]
+              "
+						>
+							<Link
+								href="/"
+								className="
+                  group
+                  flex
+                  items-center
+                  gap-2
+                  bg-[#f2f2f0]
+                  px-5
+                  py-3
+                  text-sm
+                  font-medium
+                  text-[#050505]
+                  transition-transform
+                  hover:-translate-y-0.5
+                "
+							>
+								Back home
+								<ArrowUpRight
+									size={15}
+									strokeWidth={1.5}
+									className="
+                    transition-transform
+                    group-hover:translate-x-0.5
+                    group-hover:-translate-y-0.5
+                  "
+								/>
+							</Link>
 
-    return (
-        <div className="min-h-screen bg-black text-white relative overflow-hidden">
-            <NetworkBackground />
+							<button
+								type="button"
+								onClick={() => window.history.back()}
+								className="
+                  group
+                  flex
+                  items-center
+                  gap-2
+                  border
+                  border-white/10
+                  px-5
+                  py-3
+                  text-sm
+                  text-white/50
+                  transition-all
+                  hover:border-white/25
+                  hover:text-white
+                "
+							>
+								<ArrowLeft
+									size={15}
+									strokeWidth={1.5}
+									className="
+                    transition-transform
+                    group-hover:-translate-x-1
+                  "
+								/>
+								Go back
+							</button>
+						</motion.div>
+					</div>
 
-            <Navbar />
-            {/* Main Content */}
-            <main className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-120px)] px-6 text-center mt-20">
+					{/* Bottom metadata */}
+					<motion.div
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{ delay: 0.5, duration: 0.5 }}
+						className="
+              absolute
+              bottom-8
+              left-6
+              right-6
+              flex
+              items-center
+              justify-between
+              border-t
+              border-white/10
+              pt-5
+              md:left-10
+              md:right-10
+            "
+					>
+						<span
+							className="
+                text-[9px]
+                uppercase
+                tracking-[0.16em]
+                text-white/20
+              "
+						>
+							Dibbu.dev
+						</span>
 
-                {/* Glitch 404 */}
-                <div className="relative">
-                    <h1 className="text-9xl md:text-[12rem] font-black bg-gradient-to-r from-red-500 via-blue-500 to-purple-500 bg-clip-text text-transparent animate-pulse">
-                        {glitchText}
-                    </h1>
-                    <div className="absolute inset-0 text-9xl md:text-[12rem] font-black text-white opacity-10 animate-ping">
-                        404
-                    </div>
-                </div>
-
-                {/* Error message */}
-                <div className="space-y-4 mb-12">
-                    <h2 className="text-2xl md:text-4xl font-bold">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-                            Page Not Found
-                        </span>
-                    </h2>
-                    <p className="text-gray-400 text-lg max-w-2xl leading-relaxed">
-                        Looks like this page got lost in the digital void. Even my advanced algorithms
-                        {"couldn't locate what you're looking for. Let's get you back on track!"}
-                    </p>
-                </div>
-
-                {/* Interactive buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                    <button className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25">
-                        <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div className="relative flex items-center space-x-2">
-                            <Home className="w-5 h-5" />
-                            <span>Back to Home</span>
-                        </div>
-                    </button>
-
-                    <button className="group px-8 py-4 border border-gray-700 rounded-xl font-semibold hover:border-gray-500 transition-all duration-300 hover:bg-gray-900/50" onClick={() => window.history.back()}>
-                        <div className="flex items-center space-x-2">
-                            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
-                            <span>Go Back</span>
-                        </div>
-                    </button>
-                </div>
-
-                {/* Social links */}
-                <div className="flex space-x-6">
-                    <a href="#" className="p-3 rounded-full bg-gray-800/50 border border-gray-700 hover:bg-gray-700/50 hover:border-gray-600 transition-all duration-300 hover:scale-110">
-                        <Mail className="w-5 h-5" />
-                    </a>
-                    <a href="#" className="p-3 rounded-full bg-gray-800/50 border border-gray-700 hover:bg-gray-700/50 hover:border-gray-600 transition-all duration-300 hover:scale-110">
-                        <Github className="w-5 h-5" />
-                    </a>
-                    <a href="#" className="p-3 rounded-full bg-gray-800/50 border border-gray-700 hover:bg-gray-700/50 hover:border-gray-600 transition-all duration-300 hover:scale-110">
-                        <Instagram className="w-5 h-5" />
-                    </a>
-                    <a href="#" className="p-3 rounded-full bg-gray-800/50 border border-gray-700 hover:bg-gray-700/50 hover:border-gray-600 transition-all duration-300 hover:scale-110">
-                        <Linkedin className="w-5 h-5" />
-                    </a>
-                </div>
-
-                {/* Fun Easter egg */}
-                <div className="mt-12 opacity-60">
-                    <code className="text-sm text-gray-500 font-mono">
-                        {"// TODO: Implement quantum page finder 🔍"}
-                    </code>
-                </div>
-            </main>
-
-            <style jsx>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
-        }
-        
-        @keyframes pulse {
-          0%, 100% { opacity: 0.2; }
-          50% { opacity: 0.6; }
-        }
-      `}</style>
-        </div>
-    );
+						<span
+							className="
+                text-[9px]
+                uppercase
+                tracking-[0.16em]
+                text-white/20
+              "
+						>
+							Developer · Builder · Music
+						</span>
+					</motion.div>
+				</div>
+			</main>
+		</div>
+	);
 }
