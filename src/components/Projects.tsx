@@ -303,7 +303,7 @@ export default function ProjectsPage({ projects }: ProjectsPageProps) {
               md:text-base
             "
 					>
-						Things I've built, broken, rebuilt, and occasionally managed to
+						Things I&apos;ve built, broken, rebuilt, and occasionally managed to
 						ship.
 					</p>
 				</header>
