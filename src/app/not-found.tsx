@@ -94,7 +94,7 @@ export default function NotFoundPage() {
                   md:text-6xl
                 "
 							>
-								This page doesn't
+								This page doesn&apos;t
 								<br />
 								exist.
 							</h2>
@@ -109,8 +109,9 @@ export default function NotFoundPage() {
                   md:text-base
                 "
 							>
-								The URL you're looking for couldn't be found. It may have moved,
-								been deleted, or perhaps never existed in the first place.
+								The URL you&apos;re looking for couldn&apos;t be found. It may
+								have moved, been deleted, or perhaps never existed in the first
+								place.
 							</p>
 						</motion.div>
 
