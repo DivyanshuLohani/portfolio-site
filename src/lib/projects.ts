@@ -5,6 +5,7 @@ export const projects = [
 		url: null,
 		slug: "midnightcapital",
 		year: new Date(),
+		category: "Multiplayer / Game",
 		name: "Midnight Capital - Monopoly style board game",
 		description:
 			"A monopoly style board game with some unique features and a twist",
@@ -21,6 +22,7 @@ export const projects = [
 		slug: "nexus",
 		year: new Date(),
 		name: "Nexus - Link in Bio",
+		category: "Development / Web App",
 		description: "A link in bio type app inspired by LinkTree",
 		icons: [
 			"devicon-react-plain",
@@ -53,6 +55,7 @@ export const projects = [
 		year: new Date("2024-12-01"),
 		name: "Grocery Dilevery App",
 		slug: "GroceryDeliveryApp",
+		category: "Backend / Mobile App",
 		description:
 			"A grocery delivery app built with React Native, Django, and Python.  It allows users to browse products, add items to their cart, and place orders for delivery. Handles delivery with auto rider management",
 		icons: [
@@ -92,3 +95,5 @@ export const projects = [
 		icons: ["devicon-react-plain", "devicon-tailwindcss-plain"],
 	},
 ];
+
+export type Project = (typeof projects)[number];

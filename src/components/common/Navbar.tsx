@@ -1,152 +1,301 @@
 "use client";
-import { Code2, Package, Music, Pen } from "lucide-react";
+
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-
-const variants = {
-  enter: {
-    y: -1000,
-    opacity: 0,
-  },
-  center: {
-    y: 0,
-    opacity: 1,
-  },
-  exit: { y: -1000, opacity: 0 },
-};
-
-const menuVariants = {
-  hidden: { x: 100, opacity: 0 }, // Start offscreen to the right
-  visible: { x: 0, opacity: 1 }, // Slide to the center
-  exit: { x: 100, opacity: 0 }, // Slide back offscreen to the right
-};
 
 const links = [
-  {
-    href: "/projects",
-    text: "Projects",
-    icon: Package,
-  },
-  // {
-  //   href: "/experience",
-  //   text: "Skills",
-  //   icon: Gamepad2,
-  // },
-  {
-    href: "/posts",
-    text: "Blog",
-    icon: Pen,
-  },
-  {
-    href: "/songs",
-    text: "Music",
-    icon: Music,
-  },
+	{
+		href: "/projects",
+		text: "Projects",
+	},
+	{
+		href: "/posts",
+		text: "Blog",
+	},
+	{
+		href: "/songs",
+		text: "Music",
+	},
 ];
 
-function Navbar() {
-  const [open, setOpen] = useState<boolean>(false);
+export default function Navbar() {
+	const [open, setOpen] = useState(false);
 
-  // Handle body overflow based on menu open state
-  useEffect(() => {
-    if (open) {
-      document.body.style.overflowY = "hidden";
-    } else {
-      document.body.style.overflowY = "auto";
-    }
-  }, [open]);
+	useEffect(() => {
+		document.body.style.overflow = open ? "hidden" : "";
 
-  return (
-    <nav className="fixed w-full top-0 flex md:px-10 border-b bg-black md:bg-transparent md:backdrop-blur-sm border-white/10 z-10 justify-between items-center">
-      {/* Hide Home link when the menu is open */}
+		return () => {
+			document.body.style.overflow = "";
+		};
+	}, [open]);
 
-      <motion.div
-        variants={variants}
-        initial="enter"
-        animate="center"
-        exit="exit"
-        transition={{
-          y: { type: "spring", stiffness: 300, damping: 30 },
-          opacity: { duration: 0.2 },
-        }}
-      >
-        <Link
-          href="/"
-          className="text-lg md:text-xl flex items-center gap-2 hover:bg-white/10 px-2 md:p-5"
-        >
-          <Code2 size={25} />
-          Divyanshu Lohani
-        </Link>
-      </motion.div>
+	const closeMenu = () => setOpen(false);
 
-      {/* Menu opener */}
-      <div
-        onClick={() => setOpen(!open)}
-        className="md:hidden flex flex-col gap-1 p-5"
-      >
-        <motion.div
-          className={`w-5 h-1 bg-white `}
-          animate={{ rotate: open ? 45 : 0 }}
-        />
-        <motion.div
-          className={`w-5 h-1 bg-white`}
-          animate={{ opacity: open ? 0 : 1 }}
-        />
-        <motion.div
-          className={`w-5 h-1 bg-white`}
-          animate={{ rotate: open ? -45 : 0 }}
-        />
-      </div>
+	return (
+		<>
+			<nav
+				className="
+          fixed
+          inset-x-0
+          top-0
+          z-50
+          border-b
+          border-white/10
+          bg-[#050505]/80
+          backdrop-blur-md
+        "
+			>
+				<div
+					className="
+            mx-auto
+            flex
+            h-[72px]
+            max-w-[1298px]
+            items-center
+            justify-between
+            px-6
+            md:px-10
+          "
+				>
+					{/* Logo */}
+					<Link
+						href="/"
+						onClick={closeMenu}
+						className="
+              group
+              flex
+              items-center
+              gap-2
+              text-sm
+              font-medium
+              tracking-[-0.02em]
+              text-white
+            "
+					>
+						<span className="text-white/40 transition-colors group-hover:text-[#7c9cff]">
+							/
+						</span>
 
-      <ul className="hidden md:flex items-center p-0">
-        {links.map((link) => {
-          return (
-            <li key={link.href} className="p-0">
-              <Link
-                href={link.href}
-                className="flex items-center gap-2 hover:bg-white/10 cursor-pointer p-5"
-              >
-                <link.icon size={18} />
-                {link.text}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+						<span>Dibbu.dev</span>
+					</Link>
 
-      {/* Slide in/out mobile menu */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            className="absolute right-0 top-16 left-0  backdrop-blur-sm z-10"
-            variants={menuVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            transition={{
-              x: { type: "spring", stiffness: 300, damping: 30 },
-              opacity: { duration: 0.2 },
-            }}
-          >
-            <ul className="flex flex-col items-center p-0 w-full">
-              {links.map((link) => (
-                <li className="p-0 w-full" key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="flex items-center gap-2 hover:bg-white/10 cursor-pointer p-5 w-full"
-                  >
-                    <link.icon size={18} />
-                    {link.text}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
-  );
+					{/* Desktop navigation */}
+					<div className="hidden items-center md:flex">
+						{links.map((link) => (
+							<Link
+								key={link.href}
+								href={link.href}
+								className="
+                  group
+                  ml-8
+                  flex
+                  items-center
+                  gap-1.5
+                  text-[10px]
+                  uppercase
+                  tracking-[0.14em]
+                  text-white/40
+                  transition-colors
+                  hover:text-white
+                "
+							>
+								{link.text}
+
+								<ArrowUpRight
+									size={11}
+									strokeWidth={1.5}
+									className="
+                    opacity-0
+                    -translate-x-1
+                    transition-all
+                    duration-200
+                    group-hover:translate-x-0
+                    group-hover:opacity-100
+                  "
+								/>
+							</Link>
+						))}
+
+						<Link
+							href="/#contact"
+							className="
+                ml-10
+                border-l
+                border-white/10
+                pl-8
+                text-[10px]
+                uppercase
+                tracking-[0.14em]
+                text-white/60
+                transition-colors
+                hover:text-white
+              "
+						>
+							Contact
+						</Link>
+					</div>
+
+					{/* Mobile button */}
+					<button
+						type="button"
+						aria-label={open ? "Close menu" : "Open menu"}
+						aria-expanded={open}
+						onClick={() => setOpen((value) => !value)}
+						className="
+              flex
+              h-9
+              w-9
+              items-center
+              justify-center
+              text-white/60
+              transition-colors
+              hover:text-white
+              md:hidden
+            "
+					>
+						{open ? (
+							<X size={20} strokeWidth={1.5} />
+						) : (
+							<Menu size={20} strokeWidth={1.5} />
+						)}
+					</button>
+				</div>
+			</nav>
+
+			{/* Mobile menu */}
+			<AnimatePresence>
+				{open && (
+					<motion.div
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+						className="
+              fixed
+              inset-0
+              z-40
+              bg-[#050505]
+              pt-[72px]
+              md:hidden
+            "
+					>
+						<motion.div
+							initial={{ y: -20, opacity: 0 }}
+							animate={{ y: 0, opacity: 1 }}
+							exit={{ y: -20, opacity: 0 }}
+							transition={{ duration: 0.25 }}
+							className="flex h-full flex-col"
+						>
+							{/* Links */}
+							<div className="px-6">
+								{links.map((link, index) => (
+									<Link
+										key={link.href}
+										href={link.href}
+										onClick={closeMenu}
+										className="
+                      group
+                      flex
+                      items-center
+                      justify-between
+                      border-b
+                      border-white/10
+                      py-7
+                    "
+									>
+										<div className="flex items-baseline gap-5">
+											<span
+												className="
+                          text-[10px]
+                          tracking-[0.12em]
+                          text-[#7c9cff]
+                        "
+											>
+												{String(index + 1).padStart(2, "0")}
+											</span>
+
+											<span
+												className="
+                          text-4xl
+                          font-medium
+                          tracking-[-0.04em]
+                          text-white/90
+                          transition-colors
+                          group-hover:text-white
+                        "
+											>
+												{link.text}
+											</span>
+										</div>
+
+										<ArrowUpRight
+											size={20}
+											strokeWidth={1.5}
+											className="
+                        text-white/20
+                        transition-all
+                        group-hover:translate-x-1
+                        group-hover:text-white
+                      "
+										/>
+									</Link>
+								))}
+
+								<Link
+									href="/#contact"
+									onClick={closeMenu}
+									className="
+                    group
+                    flex
+                    items-center
+                    justify-between
+                    border-b
+                    border-white/10
+                    py-7
+                  "
+								>
+									<div className="flex items-baseline gap-5">
+										<span
+											className="
+                        text-[10px]
+                        tracking-[0.12em]
+                        text-[#7c9cff]
+                      "
+										>
+											04
+										</span>
+
+										<span
+											className="
+                        text-4xl
+                        font-medium
+                        tracking-[-0.04em]
+                        text-white/90
+                      "
+										>
+											Contact
+										</span>
+									</div>
+
+									<ArrowUpRight
+										size={20}
+										strokeWidth={1.5}
+										className="text-white/20"
+									/>
+								</Link>
+							</div>
+
+							{/* Bottom */}
+							<div className="mt-auto px-6 pb-8">
+								<p className="text-[10px] uppercase tracking-[0.14em] text-white/20">
+									Developer · Builder · Music
+								</p>
+							</div>
+						</motion.div>
+					</motion.div>
+				)}
+			</AnimatePresence>
+		</>
+	);
 }
-
-export default Navbar;

@@ -28,7 +28,7 @@ export async function GET() {
 						const dateStr = post.published_at
 							? new Date(post.published_at).toISOString().split("T")[0]
 							: "";
-						return `- [${post.title}](${DOMAIN}/blogs/${post.slug}) (${dateStr}) - ${
+						return `- [${post.title}](${DOMAIN}/posts/${post.slug}) (${dateStr}) - ${
 							post.description || ""
 						}`;
 					})
@@ -45,7 +45,7 @@ Divyanshu Lohani is a freelance web developer and software engineer with extensi
 
 ## Quick Links
 - [Portfolio](${DOMAIN})
-- [Blog Posts](${DOMAIN}/blogs)
+- [Blog Posts](${DOMAIN}/posts)
 - [RSS Feed](${DOMAIN}/rss.xml)
 - [Sitemap](${DOMAIN}/sitemap.xml)
 - [GitHub](https://github.com/DivyanshuLohani)

@@ -5,7 +5,7 @@ import Link from "next/link";
 import type React from "react";
 import { FaGithub } from "react-icons/fa6";
 
-interface Project {
+export interface Project {
 	year: Date;
 	name: string;
 	description: string;

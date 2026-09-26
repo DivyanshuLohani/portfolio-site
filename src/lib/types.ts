@@ -1,10 +1,10 @@
-interface User {
+export interface User {
   name: string;
   username: string;
   twitter_username: string | null;
-  github_username: string;
+  github_username: string | null;
   user_id: number;
-  website_url: string;
+  website_url: string | null;
   profile_image: string;
   profile_image_90: string;
 }
@@ -32,9 +32,11 @@ export interface Post {
   published_at: string;
   last_comment_at: string;
   reading_time_minutes: number;
-  tag_list: string;
+  tag_list: string | string[];
   tags: string[];
   body_html: string;
   body_markdown: string;
   user: User;
+  readingTime?: string;
+  excerpt?: string;
 }

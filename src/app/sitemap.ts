@@ -19,7 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1.0,
     },
     {
-      url: `${DOMAIN}/blogs`,
+      url: `${DOMAIN}/posts`,
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.9,
@@ -46,7 +46,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Dynamic routes for blog posts
   const blogRoutes = blogPosts.map((post) => ({
-    url: `${DOMAIN}/blogs/${post.slug}`,
+    url: `${DOMAIN}/posts/${post.slug}`,
     lastModified: new Date(post.published_at), // Using publishedDate instead of updatedAt
     changeFrequency: "monthly",
     priority: 0.7,

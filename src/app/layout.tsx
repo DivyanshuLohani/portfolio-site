@@ -4,6 +4,7 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 
 import RssFloatingIcon from "@/components/common/RssFloatingIcon";
+import ScrollToTop from "@/components/common/ScrollToTop";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -52,6 +53,7 @@ export default function RootLayout({
         {children}
 
         <RssFloatingIcon />
+        <ScrollToTop />
         {/* <N8NChat webhookUrl={process.env.N8N_URL as string} /> */}
         <Analytics />
       </body>

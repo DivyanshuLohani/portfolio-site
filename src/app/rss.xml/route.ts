@@ -25,7 +25,7 @@ export async function GET() {
 
 	const itemsXml = posts
 		.map((post) => {
-			const postUrl = `${DOMAIN}/blogs/${post.slug}`;
+			const postUrl = `${DOMAIN}/posts/${post.slug}`;
 			const pubDate = post.published_at
 				? new Date(post.published_at).toUTCString()
 				: new Date().toUTCString();

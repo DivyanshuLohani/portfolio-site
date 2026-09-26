@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "fetch:blogs": "node scripts/fetch-blogs.mjs",
+    "build:search": "node scripts/build-search-index.mjs",
+    "predev": "node scripts/fetch-blogs.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/fetch-blogs.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -42,6 +46,7 @@
     "@types/react-syntax-highlighter": "^15.5.13",
     "eslint": "^8",
     "eslint-config-next": "14.2.8",
+    "pagefind": "^1.5.2",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
