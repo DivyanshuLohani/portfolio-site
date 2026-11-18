@@ -64,14 +64,11 @@ interface CodeBlockProps extends React.HTMLAttributes<HTMLElement> {
 	inline?: boolean;
 	className?: string;
 	children?: ReactNode;
+	node?: unknown;
 }
 
-export const CodeBlock = ({
-	inline,
-	className,
-	children,
-	...props
-}: CodeBlockProps) => {
+export const CodeBlock = (allProps: CodeBlockProps) => {
+	const { inline, className, children } = allProps;
 	const match = /language-(\w+)/.exec(className || "");
 
 	let language = match?.[1] || "";
@@ -84,21 +81,25 @@ export const CodeBlock = ({
 		.join("")
 		.replace(/\n$/, "");
 
-	if (inline) {
+	// In react-markdown v9+, inline prop is deprecated or omitted.
+	// Inline code has no language className and does not contain newlines.
+	const isInline =
+		inline ?? (!className && !codeString.includes("\n"));
+
+	if (isInline) {
 		return (
 			<code
 				className="
           rounded
           border
           border-white/10
-          bg-white/[0.04]
+          bg-white/[0.06]
           px-1.5
           py-0.5
           font-mono
-          text-[0.9em]
-          text-[#7c9cff]
+          text-[0.88em]
+          text-white/90
         "
-				{...props}
 			>
 				{children}
 			</code>
@@ -171,6 +172,7 @@ export default function PostBody({ body_markdown }: { body_markdown: string }) {
 		<div className="blog-body">
 			<ReactMarkdown
 				components={{
+					pre: ({ children }) => <>{children}</>,
 					code: CodeBlock,
 
 					a: ({ children, href, ...props }) => {

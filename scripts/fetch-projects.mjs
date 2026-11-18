@@ -1,0 +1,161 @@
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const rootDir = path.resolve(__dirname, "..");
+const cacheFilePath = path.resolve(rootDir, "projects-cache.json");
+
+const projects = [
+	{
+		imageUrl: "/projs/MidnightCapital.png",
+		liveUrl: "https://midnightcapital.divyanshulohani.xyz/",
+		url: null,
+		slug: "midnightcapital",
+		year: "2024",
+		category: "Multiplayer / Game",
+		name: "Midnight Capital - Monopoly style board game",
+		description:
+			"A monopoly style board game with some unique features and a twist",
+		icons: [
+			"devicon-react-plain",
+			"devicon-socketio-original",
+			"devicon-tailwindcss-plain",
+		],
+	},
+	{
+		imageUrl: "/projs/Nexus.png",
+		liveUrl: "https://nexus.divyanshulohani.xyz/",
+		url: "https://github.com/DivyanshuLohani/nexus",
+		slug: "nexus",
+		year: "2024",
+		name: "Nexus - Link in Bio",
+		category: "Development / Web App",
+		description: "A link in bio type app inspired by LinkTree",
+		icons: [
+			"devicon-react-plain",
+			"devicon-tailwindcss-plain",
+			"devicon-postgres-plain",
+		],
+	},
+	{
+		imageUrl:
+			"https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fqxwlml29q8z34yorz9xp.png",
+		liveUrl: "https://guessdoodle.com",
+		url: "https://github.com/DivyanshuLohani/SyncDrawGuess",
+		slug: "SyncDrawGuess",
+		year: "2024",
+		name: "Sync Draw Guess - Doodle Guessing Game",
+		description: "A realtime multiplayer doodle guessing game",
+		icons: [
+			"devicon-nodejs-plain",
+			"devicon-react-plain",
+			"devicon-socketio-original",
+			"devicon-tailwindcss-plain",
+			"devicon-websockets-plain",
+		],
+	},
+	{
+		imageUrl:
+			"https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F10d9xj7y9iw9u2uhycmn.png",
+		url: "https://github.com/DivyanshuLohani/GroceryDeliveryApp",
+		liveUrl: "https://x.com/i/status/1872324261920346577",
+		year: "2024",
+		name: "Grocery Dilevery App",
+		slug: "GroceryDeliveryApp",
+		category: "Backend / Mobile App",
+		description:
+			"A grocery delivery app built with React Native, Django, and Python. It allows users to browse products, add items to their cart, and place orders for delivery. Handles delivery with auto rider management",
+		icons: [
+			"devicon-reactnavigation-plain",
+			"devicon-python-plain",
+			"devicon-django-plain",
+			"devicon-tailwindcss-plain",
+		],
+	},
+	{
+		imageUrl:
+			"https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F6alnho4w4jwj4bn5acx0.png",
+		url: "https://github.com/DivyanshuLohani/ClassToCloud",
+		slug: "ClassToCloud",
+		liveUrl: "https://x.com/DivyanshuLohani/status/1839622747288203433",
+		year: "2024",
+		name: "Classroom To Cloud - LMS Platform with Video Streaming",
+		description:
+			"An app for coaching businesses to take their coaching to online classes",
+		icons: [
+			"devicon-reactnavigation-plain",
+			"devicon-python-plain",
+			"devicon-django-plain",
+			"devicon-tailwindcss-plain",
+		],
+	},
+	{
+		imageUrl:
+			"https://github.com/user-attachments/assets/9b6a3769-f8e2-431c-a044-86c06f74152e",
+		liveUrl: "https://finflow.divyanshulohani.xyz",
+		url: "https://github.com/DivyanshuLohani/FinFlow",
+		slug: "FinFlow",
+		year: "2024",
+		name: "FinFlow - Expense Tracker",
+		description:
+			"An expense tracker app that helps users track expenses and generate CSV reports for the month",
+		icons: ["devicon-react-plain", "devicon-tailwindcss-plain"],
+	},
+];
+
+export async function fetchProjectsData() {
+	console.log("Fetching project readmes from GitHub...");
+	let existingCache = {};
+	if (fs.existsSync(cacheFilePath)) {
+		try {
+			existingCache = JSON.parse(fs.readFileSync(cacheFilePath, "utf-8"));
+		} catch {}
+	}
+
+	const enrichedProjects = [];
+	for (const p of projects) {
+		let markdown = existingCache[p.slug]?.markdown || "";
+
+		try {
+			const res = await fetch(
+				`https://api.github.com/repos/DivyanshuLohani/${p.slug}/readme`,
+				{ headers: { "User-Agent": "portfolio-build-script" } }
+			);
+
+			if (res.ok) {
+				const data = await res.json();
+				if (data.content) {
+					markdown = Buffer.from(data.content, "base64").toString("utf-8");
+				}
+			} else {
+				console.warn(`[fetch-projects] Note: Readme for ${p.slug} returned ${res.status}`);
+			}
+		} catch (err) {
+			console.warn(`[fetch-projects] Could not fetch readme for ${p.slug}:`, err.message);
+		}
+
+		if (!markdown) {
+			markdown = `# ${p.name}\n\n${p.description}\n\n[Visit Live Demo](${p.liveUrl || p.url || "#"})`;
+		}
+
+		enrichedProjects.push({
+			...p,
+			markdown,
+		});
+	}
+
+	const cacheMap = {};
+	for (const item of enrichedProjects) {
+		cacheMap[item.slug] = item;
+	}
+
+	fs.writeFileSync(cacheFilePath, JSON.stringify(cacheMap, null, 2), "utf-8");
+	console.log(`✅ [fetch-projects] Successfully saved ${enrichedProjects.length} projects to ${cacheFilePath}`);
+	return enrichedProjects;
+}
+
+if (process.argv[1] === __filename) {
+	fetchProjectsData();
+}

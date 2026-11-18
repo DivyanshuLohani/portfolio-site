@@ -298,6 +298,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 							remarkPlugins={[remarkGfm]}
 							rehypePlugins={[rehypeHighlight, rehypeSanitize, rehypeRaw]}
 							components={{
+								pre: ({ children }) => <>{children}</>,
 								code: CodeBlock,
 							}}
 						>

@@ -60,6 +60,27 @@ async function fetchArticleDetails(articleId) {
 	return await res.json();
 }
 
+/**
+ * Remove width, height, and fit parameters from dev.to dynamic image transformation URLs
+ * e.g. https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/...
+ * -> https://media2.dev.to/dynamic/image/gravity=auto,format=auto/...
+ */
+function cleanDevToImageUrl(url) {
+	if (!url || typeof url !== "string") return url;
+	return url.replace(
+		/^(https?:\/\/media2?\.dev\.to\/dynamic\/image\/)([^/]+)(\/.*)$/,
+		(match, base, params, rest) => {
+			const delimiter = params.includes("%2C") ? "%2C" : ",";
+			const filtered = params
+				.split(delimiter)
+				.filter((p) => !/^(width=\d*|height=\d*|fit=[^,%]+)$/i.test(p.trim()));
+			return filtered.length > 0
+				? `${base}${filtered.join(delimiter)}${rest}`
+				: `${base.replace(/\/$/, "")}${rest}`;
+		},
+	);
+}
+
 function normalizePost(item, fullDetails) {
 	const source = fullDetails || item;
 
@@ -100,13 +121,16 @@ function normalizePost(item, fullDetails) {
 			new Date().toISOString(),
 		positive_reactions_count:
 			source.positive_reactions_count ?? item.positive_reactions_count ?? 0,
-		cover_image: source.cover_image || item.cover_image || "",
-		social_image:
+		cover_image: cleanDevToImageUrl(
+			source.cover_image || item.cover_image || "",
+		),
+		social_image: cleanDevToImageUrl(
 			source.social_image ||
 			item.social_image ||
 			source.cover_image ||
 			item.cover_image ||
 			"",
+		),
 		canonical_url: source.canonical_url || item.canonical_url || "",
 		created_at: source.created_at || item.created_at || "",
 		edited_at: source.edited_at ?? item.edited_at ?? null,
